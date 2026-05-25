@@ -5,31 +5,68 @@
             <h2 class="section-heading text-uppercase">Overview | 요약</h2>
         </div>
 
-        <div style="background-color: var(--bs-bg-box-color-alt); height:15;padding: 10px;padding-top: 10px;">
-            <p>
-            (<u><b>A Layperson's Introduction</b></u>).
-            Uncertainty is everywhere in the real world. A sudden power outage may occur at home; flights, packages, and emails may be delayed; and every commute involves pedestrians, cyclists, and vehicles whose behaviors are uncertain. Even our own choices can be uncertain, from what gift to buy for a friend, to what clothes to wear for the day.
-            <br>
-            Despite this, people navigate daily life reasonably well because we can adapt, plan, and make reliable decisions even when our predictions are imperfect. It follows naturally that <b>control and decision-making methods for cyberphysical/robotic autonomous systems</b> should follow a similar principle.
-            </p>
+        <div class="translation-box">
+            <button id="languageToggle" class="btn btn-primary btn-sm" type="button">
+                한국어로 보기
+            </button>
 
-            <p>
-            (<u><b>Some Technical Background</b></u>).
-            Probabilistic concepts like <b>stochastic processes/differential equations</b> provide core mathematical tools for modeling systems affected by random phenomena. In <b>control systems engineering</b> and its related subfields, such model-based methods are often interpretable and theoretically grounded, making it possible to derive concrete guarantees for properties such as stability, safety, and robustness. However, many uncertain systems in practice are too complex to model exactly (<i>"All models are wrong, but some are useful" -- Box, 1976</i>). This has motivated data-driven, often model-free approaches based on <b>artificial intelligence (AI)</b>, especially because of their strong representation and generalization abilities. At the same time, AI-based methods require high-quality data and substantial computation, and their lack of interpretability can make it difficult to certify stability, safety, or robustness.
-            <br>
-            To achieve trustworthy autonomous control and decision-making under uncertainty, it is important to study the spectrum between model-based and model-free methods. The goal is to combine the generalization ability of the model-free with the reliability guarantees of the model-based.
-            </p>
+            <div id="englishIntro" style="background-color: var(--bs-bg-box-color-alt); height:15;padding: 10px;padding-top: 10px;" class="translation-content lang-en">
+                <p>
+                (<u><b>A Layperson's Introduction</b></u>).
+                Uncertainty is everywhere in the real world. A sudden power outage may occur at home; flights, packages, and emails may be delayed; and every commute involves pedestrians, cyclists, and vehicles whose behaviors are uncertain. Even our own choices can be uncertain, from what gift to buy for a friend, to what clothes to wear for the day.
+                <br>
+                Despite this, people navigate daily life reasonably well because we can adapt, plan, and make reliable decisions even when our predictions are imperfect. It follows naturally that <b>control and decision-making methods for cyberphysical/robotic autonomous systems</b> should follow a similar principle.
+                </p>
+
+                <p>
+                (<u><b>Some Technical Background</b></u>).
+                Probabilistic concepts like <b>stochastic processes/differential equations</b> provide core mathematical tools for modeling systems affected by random phenomena. In <b>control systems engineering</b> and its related subfields, such model-based methods are often interpretable and theoretically grounded, making it possible to derive concrete guarantees for properties such as stability, safety, and robustness. However, many uncertain systems in practice are too complex to model exactly (<i>"All models are wrong, but some are useful" -- Box, 1976</i>). This has motivated data-driven, often model-free approaches based on <b>artificial intelligence (AI)</b>, especially because of their strong representation and generalization abilities. At the same time, AI-based methods require high-quality data and substantial computation, and their lack of interpretability can make it difficult to certify stability, safety, or robustness.
+                <br>
+                To achieve trustworthy autonomous control and decision-making under uncertainty, it is important to study the spectrum between model-based and model-free methods. The goal is to combine the generalization ability of the model-free with the reliability guarantees of the model-based.
+                </p>
+            </div>
+
+            <div id="koreanIntro"  class="translation-content lang-ko" style="background-color: var(--bs-bg-box-color-alt); padding: 10px;">
+                <p>
+                (<u><b>비전공자를 위한 소개</b></u>).
+                불확실성은 현실 세계 곳곳에 존재합니다. 집에서 갑작스러운 정전이 발생할 수 있고; 항공편, 택배, 이메일등 지연될 수 있고; 매일 출퇴근길에는 행동을 예측하기 어려운 보행자, 자전거, 차량들이 함께 존재합니다. 심지어 친구에게 어떤 선물을 살지, 오늘 어떤 옷을 입을지와 같은 우리 자신의 선택도 불확실할 수 있습니다.
+                <br>
+                그럼에도 사람들은 불완전한 예측 속에서도 적응하고, 계획하고, 신뢰할 수 있는 결정을 내리며 일상생활을 비교적 잘 해 나자나요? 따라서 <b>사이버물리/로봇 자율 시스템을 위한 제어 및 의사결정 방법</b> 역시 이와 유사한 원리를 따라야 합니다.
+                </p>
+
+                <p>
+                (<u><b>일부 기술적 배경</b></u>).
+                <b>확률 과정과 확률 미분방정식</b> 같은 확률적 개념은 무작위 현상의 영향을 받는 시스템을 모델링하기 위한 핵심 수학 도구입니다. <b>제어 시스템 공학</b> 및 관련 분야에서 이러한 모델 기반 방법은 해석 가능하고 이론적으로 정립되어 있는 경우가 많아, 안정성, 안전성, 강인성과 같은 성질에 대한 구체적인 보장을 도출할 수 있습니다. 그러나 실제의 많은 불확실한 시스템은 정확히 모델링하기에는 너무 복잡합니다 (<i>"All models are wrong, but some are useful" -- Box, 1976</i>). 이로 인해 <b>인공지능(AI)</b>와 같은 데이터 기반, 종종 모델 프리 접근법이 주목받고 있으며, 특히 강력한 표현 능력과 일반화 능력 때문에 유용합니다. 동시에 AI 기반 방법은 고품질 데이터와 많은 계산 자원을 필요로 하며, 해석 가능성이 낮아 안정성, 안전성, 강인성을 인증하기 어렵다는 한계가 있습니다.
+                <br>
+                불확실성 아래에서 신뢰할 수 있는 자율 제어와 의사결정을 달성하기 위해서는 모델 기반 방법과 모델 프리 방법 사이의 스펙트럼을 연구하는 것이 중요합니다. 목표는 모델 프리 방법의 일반화 능력과 모델 기반 방법의 신뢰성 보장을 결합하는 것입니다.
+                </p>
+            </div>
+
+            <div class="text-center">
+                <h3 class="section-heading text-uppercase" style="margin-top:1cm;margin-bottom:0.5cm;">Our Vision | 목적
+                </h3>
+
+                <div id="englishGoal" class="translation-content lang-en">
+                    <h3 class="section-subheading"> 
+                        Our lab develops decision-making algorithms for <u>stochastic autonomous systems</u>, combining control theory, optimization, and modern AI tools while preserving theoretical guarantees for safety and stability, robust adaptability, and data-efficiency.<!-- <br> --> Our research spans a broad range of applications, including motion-planning, tolerance against faults/OOD behaviors, reinforcement learning, multi-agent/networked systems, and embodied AI.
+                    </h3>
+
+                    <h3 class="section-subheading text-muted"> 
+                        See our individual projects for more.
+                    </h3>
+                </div>
+
+                <div id="koreanGoal" class="translation-content lang-ko">
+                    <h3 class="section-subheading"> 
+                        본 연구실은 제어 이론, 최적화과 최신 AI 도구들을 결합하여 <u>확률적 자율 시스템</u>을 위한 의사결정 알고리즘을 개발한다. 이 알고리즘은 안전성과 안정성, 견고한 적응성, 데이터 효율성에 대한 이론적 보장을 유지하면서 작동한다. 본 연구는 동작 계획, 오류/OOD 동작에 대한 내성, 강화 학습, 다중 에이전트/네트워크 시스템, 체화된 AI 등 광범위한 응용 분야를 포괄한다.
+                    </h3>
+
+                    <h3 class="section-subheading text-muted"> 
+                        더 자세한 내용은 아래의 개별 프로젝트 페이지를 참조하세요.
+                    </h3>
+                </div>
+            </div>
         </div>
-
-        <div class="text-center">
-            <h3 class="section-heading text-uppercase" style="margin-top:1cm;margin-bottom:0.5cm;">Our Vision | 목적</h3>
-            <h3 class="section-subheading"> Our lab develops decision-making algorithms for <u>stochastic autonomous systems</u>, combining control theory, optimization, and modern AI tools while preserving theoretical guarantees for safety and stability, robust adaptability, and data-efficiency.
-            <!-- <br> -->
-            Our research spans a broad range of applications, including motion-planning, tolerance against faults/OOD behaviors, reinforcement learning, multi-agent/networked systems, and embodied AI.</h3>
-
-            <h3 class="section-subheading text-muted"> See our individual projects for more.</h3>
-        </div>
-
 
         <div style="background-color: var(--bs-bg-box-color); height:15;padding: 10px;padding-top: 10px;">
         <!-- <h4 class="section-subheading text-muted"> To prospective students who would like to join our lab:</h4> -->

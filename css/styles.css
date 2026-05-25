@@ -1534,9 +1534,10 @@ progress{
 }
 @keyframes spinner-border {
   to {
-    transform: rotate(360deg) /* rtl:ignore */;
+    transform: rotate(360deg);
   }
 }
+*/
 @keyframes spinner-grow {
   0% {
     transform: scale(0);
@@ -1851,6 +1852,33 @@ header.masthead .masthead-heading{
   }
 
 }
+.translation-box {
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.translation-content {
+  margin-top: 15px;
+}
+
+.lang-ko {
+  display: none;
+}
+
+body.show-ko .lang-ko {
+  display: block;
+}
+
+body.show-ko .lang-en {
+  display: none;
+}
+
+#languageToggle {
+  margin-bottom: 5px;
+}
+
 #portfolio .portfolio-item{
   max-width: 26rem;
   margin-left: auto;

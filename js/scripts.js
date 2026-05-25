@@ -7,6 +7,22 @@
 // Scripts
 // 
 
+function initializeLanguageToggle() {
+  const button = document.getElementById("languageToggle");
+
+  if (!button) {
+    console.warn("languageToggle button was not found.");
+    return;
+  }
+
+  button.addEventListener("click", function () {
+    document.body.classList.toggle("show-ko");
+
+    const showingKorean = document.body.classList.contains("show-ko");
+    button.textContent = showingKorean ? "View in English" : "한국어로 보기";
+  });
+}
+
 window.addEventListener('DOMContentLoaded', async (event) => {
 
     // --- NEW: load partial HTML into placeholders ---
@@ -25,6 +41,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         loadInto('#include-team',         'subpages/team.html'),
         loadInto('#include-modals',       'subpages/research_modals.html'),
     ]);
+
+    initializeLanguageToggle();
 
     // If the user landed on /#team etc, the browser may have tried before content existed.
     // Force-scroll after subpages are present.
