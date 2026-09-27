@@ -64,6 +64,7 @@
 .tag-motionplan{ background-color: #878787; color: #fff; }
 .tag-cv{ background-color: #E0C200; color: #fff; }
 .tag-slt{ background-color: #478233; color: #fff; }
+.tag-cps{ background-color: #878787; color: #fff; }
 
 .tag-udm::before,
 .tag-dmc::before,
@@ -79,7 +80,8 @@
 .tag-filter::before,
 .tag-motionplan::before,
 .tag-cv::before,
-.tag-slt::before{ content: attr(data-label); }
+.tag-slt::before,
+.tag-cps::before{ content: attr(data-label); }
 
 /* Fallback: if no data-label is provided, use the project default */
 .tag-udm:not([data-label])::before{ content: "UDM"; }
@@ -94,10 +96,11 @@
 .tag-genAI:not([data-label])::before{ content: "GenModels"; }
 .tag-dynamics:not([data-label])::before{ content: "Dynamics"; }
 .tag-filter:not([data-label])::before{ content: "FilterEstim"; }
+.tag-wm:not([data-label])::before{ content: "WM"; }
 .tag-motionplan:not([data-label])::before{ content: "Planning"; }
 .tag-cv:not([data-label])::before{ content: "CV"; }
 .tag-slt:not([data-label])::before{ content: "SLT"; }
-
+.tag-cps:not([data-label])::before{ content: "CPS"; }
 
 /* 4) Publication blocks (your HTML uses .blurb but styles.css doesn't define it) */
 .blurb{ max-width: 980px; margin-left: auto; margin-right: auto; }
