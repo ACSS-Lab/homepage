@@ -3,8 +3,14 @@ name: Mincheol Kang
 nameKo: 강민철
 role: ms
 joined: 2026-02
+topics:
+  - SafeCtrl
+  - RL
+  - WM
+  - Robot
+representative: false
 email: mincheol@kaist.ac.kr
-topics: [SafeCtrl, RL, WM, Robot]
+photo: /images/team/2_mincheol.webp
 links:
   homepage: https://example.com/
   linkedin: https://example.com/
