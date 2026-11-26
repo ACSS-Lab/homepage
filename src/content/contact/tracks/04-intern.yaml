@@ -1,6 +1,6 @@
 label: Undergraduate intern
-open: true
-subject: "[ACSS] Undergraduate intern — Your Name"
+open: false
+subject: '[ACSS] Undergraduate intern — Your Name'
 items:
   - CV (PDF)
   - Transcript
