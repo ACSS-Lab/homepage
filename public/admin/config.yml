@@ -96,10 +96,29 @@ collections:
       - { name: selected, label: Selected, widget: boolean, default: false, hint: 'Features the paper in the Selected publications carousel.' }
       - name: areas
         label: Areas
-        widget: list
+        widget: select
+        multiple: true
         min: 1
-        field: { name: code, label: Area code, widget: string, pattern: ['^[A-Za-z][A-Za-z0-9]*$', 'Codes are letters and digits only, e.g. StochCtrl'] }
-        hint: Area codes from src/content/taxonomy/areas.yaml, e.g. StochCtrl, RL (at least one; the build stops on an unknown code).
+        # The research-area tags of src/content/taxonomy/areas.yaml, in its order. `npm run guard`
+        # fails when the two lists differ. Member topics reuse this list through the alias.
+        options: &area_options
+          - { label: 'Stochastic Control (StochCtrl)', value: StochCtrl }
+          - { label: 'Distributed / Multiagent Control (DMC)', value: DMC }
+          - { label: 'Control with Safety (SafeCtrl)', value: SafeCtrl }
+          - { label: 'Adaptive Control (AdaptCtrl)', value: AdaptCtrl }
+          - { label: 'Uncertainty Quantification (UQ)', value: UQ }
+          - { label: 'Uncertain Decision-Making (UDM)', value: UDM }
+          - { label: 'Reinforcement Learning (RL)', value: RL }
+          - { label: 'Online Learning (OnLearn)', value: OnLearn }
+          - { label: 'Statistical Learning Theory (SLT)', value: SLT }
+          - { label: 'Dynamics Modeling (Dynamics)', value: Dynamics }
+          - { label: 'Modeling with Generative AI (GenModels)', value: GenModels }
+          - { label: 'World Model (WM)', value: WM }
+          - { label: 'Filtering & State-Estimation (FilterEstim)', value: FilterEstim }
+          - { label: 'Computer Vision & Perception (CV)', value: CV }
+          - { label: 'Application: Robotics (Robot)', value: Robot }
+          - { label: 'Application: Motion-Planning (Planning)', value: Planning }
+        hint: Pick one or more research areas (at least one).
       - { name: summary, label: Summary, widget: text, hint: 'One or two sentences shown when the row is expanded, in plain words.' }
       - name: links
         label: Links
@@ -283,10 +302,11 @@ collections:
       - { name: joined, label: Joined, widget: string, pattern: ['^\d{4}-(0[1-9]|1[0-2])$', 'Write the date as year-month, e.g. 2026-03'], hint: 'Year-month, e.g. 2026-03; a future date is shown as "Incoming".' }
       - name: topics
         label: Topics
-        widget: list
+        widget: select
+        multiple: true
         required: false
-        field: { name: code, label: Area code, widget: string, pattern: ['^[A-Za-z][A-Za-z0-9]*$', 'Codes are letters and digits only, e.g. StochCtrl'] }
-        hint: Area codes from src/content/taxonomy/areas.yaml, e.g. StochCtrl, RL; leave empty if none yet.
+        options: *area_options
+        hint: Pick the member's research areas; leave empty if none yet.
       - { name: representative, label: Lab representative, widget: boolean, default: false, hint: 'Shows the "Lab Representative" badge.' }
       - { name: email, label: E-mail, widget: string, type: email, required: false }
       - name: photo

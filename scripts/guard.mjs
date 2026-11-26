@@ -11,6 +11,7 @@
 //     within the size caps below, and each one referenced from content.
 //   - The `template: true` marker that hides a _template.yaml from the web admin stays there.
 //   - Every YAML file under src/content parses, templates included (the web admin reads them all).
+//   - The research-area options of the web admin list exactly the codes of the taxonomy.
 
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
@@ -136,6 +137,27 @@ for (const path of walk(join(root, 'src/content'))) {
   } catch (error) {
     violations.push({ rule: 'YAML file does not parse. Quote a value that contains ": " or starts with a special character.', where: relative(root, path), line: String(error.message).split('\n')[0] });
   }
+}
+
+// The web admin offers the research-area tags as a fixed list of options (public/admin/config.yml).
+// That list restates src/content/taxonomy/areas.yaml, so the two must hold the same codes in the same order.
+const ADMIN_CONFIG = 'public/admin/config.yml';
+const AREAS_FILE = 'src/content/taxonomy/areas.yaml';
+const AREA_FIELDS = { publications: 'areas', members: 'topics' };
+try {
+  const codes = parseYaml(readFileSync(join(root, AREAS_FILE), 'utf8')).families.flatMap((family) => family.codes.map((entry) => entry.code));
+  const collections = parseYaml(readFileSync(join(root, ADMIN_CONFIG), 'utf8')).collections;
+  for (const [collection, field] of Object.entries(AREA_FIELDS)) {
+    const definition = collections.find((c) => c.name === collection)?.fields.find((f) => f.name === field);
+    const options = (definition?.options ?? []).map((option) => option.value);
+    if (options.join(' ') === codes.join(' ')) continue;
+    const missing = codes.filter((code) => !options.includes(code));
+    const unknown = options.filter((code) => !codes.includes(code));
+    const detail = [missing.length && `missing ${missing.join(', ')}`, unknown.length && `not in the taxonomy ${unknown.join(', ')}`].filter(Boolean).join('; ') || 'same codes, different order';
+    violations.push({ rule: `Admin area options differ from ${AREAS_FILE}. Update the "&area_options" list in ${ADMIN_CONFIG} to the same codes in the same order.`, where: `${ADMIN_CONFIG} (${collection}.${field})`, line: detail });
+  }
+} catch (error) {
+  violations.push({ rule: 'Could not compare the admin area options with the taxonomy.', where: ADMIN_CONFIG, line: String(error.message).split('\n')[0] });
 }
 
 // Media files: names, formats, sizes and the old location.

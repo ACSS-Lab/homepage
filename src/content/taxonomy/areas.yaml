@@ -4,6 +4,9 @@
 #
 # To add an area: add a { code, label } line under the right family.
 # Codes are letters/digits only and must be unique across all families.
+# Then add the same code, at the same position, to the "&area_options" list in
+# public/admin/config.yml so the web admin offers it; `npm run guard` fails until
+# the two lists match.
 # Adding a whole new family also needs a color — ask a developer.
 
 families:

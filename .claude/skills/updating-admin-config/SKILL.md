@@ -29,6 +29,7 @@ Pages, site settings, taxonomy and prose are not in the admin.
 | `imagePath` | `widget: image, media_folder: /src/assets/images/<folder>, public_folder: /images/<folder>, accept: image/jpeg,image/png,image/webp,image/avif,image/heic` |
 | `mediaPath` (image or mp4) | `widget: file` with the same folders and `accept` plus `video/mp4` |
 | `z.array(z.string())` | `widget: list, field: { name, widget: string }` |
+| area codes (`areas`, `topics`) | `widget: select, multiple: true, options: *area_options` (the list is defined once, as `&area_options`, on the publications `areas` field) |
 | `z.array(z.object(...))` | `widget: list, fields: [...]` |
 | `z.object(...)` | `widget: object, fields: [...]` |
 | `bilingual` | `widget: object` with `en` and `ko` text fields |
@@ -41,6 +42,8 @@ Pages, site settings, taxonomy and prose are not in the admin.
 - The regex in `pattern` is copied from the schema, and the message too.
 - Collections whose folder holds a `_template.yaml` keep `filter: { field: template, value: null }` and a first field `{ name: template, widget: hidden, required: false }`; the template file starts with `template: true`.
 - A team collection sets `group` as a hidden field with the group as `default`, and `folder` to the matching subfolder.
+- The `&area_options` list restates `src/content/taxonomy/areas.yaml`: same codes, same order, label `<label> (<code>)`.
+  Change both files together; `npm run guard` compares them.
 - Cross-field rules the admin cannot check (for example "image needs alt") go into a `hint`; the build enforces them.
 - Never put a token, key or URL with a secret into the file; it is public.
 - In a one-line `{ ... }` field, quote the `hint` (a comma would start a new key) and any value with `: ` in it; a hidden field takes only `default`, never `required`.

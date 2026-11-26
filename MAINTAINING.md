@@ -172,6 +172,9 @@ If you're unsure which field takes what, copy the "Ask Claude" prompt below.
 
 ### 3-9. Add a research-area tag
 - **Research areas** — `src/content/taxonomy/areas.yaml`: the tags used to label publications and members, grouped into families. Add a `{ code, label }` line under the right family; codes are letters/digits only and must be unique.
+- The web admin offers these tags as a pick list (Areas on a publication, Topics on a member; several can be chosen).
+  The list is the `&area_options` block in `public/admin/config.yml`: add, rename or remove the same code there, at the same position.
+  `nvm use && npm run guard` fails until the two lists match.
 - Adding a whole new *family* also needs a color, which is a design change — ask Claude.
 
 ### 3-10. Change the wording on a page
