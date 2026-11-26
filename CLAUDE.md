@@ -17,7 +17,7 @@ Pages read content only through the getters in `src/lib/content.ts`, which also 
 nvm use && npm run dev      # local preview at http://localhost:4321
 nvm use && npm run build    # static build into dist/; runs the schema and cross-file checks
 nvm use && npm run check    # type check (astro check)
-nvm use && npm run guard    # project rules: lucide-only icons, colors only in tokens.css, content via src/lib/content.ts, no CDNs, media through Figure and within the file rules
+nvm use && npm run guard    # project rules: lucide-only icons, colors only in tokens.css, content via src/lib/content.ts, no CDNs, media through Figure and within the file rules, admin area options match the taxonomy
 nvm use && npm run responsive  # after a build: every page at 360/768/1024/1440px must not overflow its viewport
 ```
 
