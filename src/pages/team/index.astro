@@ -75,7 +75,7 @@ const internGroups = (interns: typeof team.interns) =>
           {
             roleGroups.map((group, g) => (
               <div class="group rise" style={`--i: ${g}`} data-group={group.role}>
-                <SectionHeading as="h3" title={group.title} count={group.people.length} />
+                <SectionHeading as="h3" title={group.title} />
                 <div class="grid">
                   {group.people.map((member, i) => (
                     <MemberCard member={member} areas={areas} labels={labels} roleLabel={group.title} index={i} hidden={position++ >= page.pageSize} />
@@ -120,7 +120,7 @@ const internGroups = (interns: typeof team.interns) =>
       {
         degreeGroups.map((group, g) => (
           <div class="group alumni-group rise" style={`--i: ${g}`}>
-            <SectionHeading as="h3" title={group.title} count={group.people.length} />
+            <SectionHeading as="h3" title={group.title} />
             <div class="grid">
               {group.people.map((alumnus, i) => (
                 <AlumniCard alumnus={alumnus} degreeTitle={page.degreeTitles[alumnus.degree]} labels={labels} index={i} />
