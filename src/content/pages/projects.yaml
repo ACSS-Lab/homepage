@@ -27,5 +27,3 @@ labels:
   relatedHint: Selecting a publication opens the Publications page at that entry.
   # {label} is replaced with the project title.
   openDetail: "{label} — open project detail"
-  # Shown on a card until its cover image is added. {path} is where the image file should go.
-  coverNote: "cover — {path} · 16:9 cover crop"

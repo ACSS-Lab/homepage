@@ -6,10 +6,6 @@ title: Team # browser tab title
 
 hero:
   title: Team
-  # Describes the background image planned for the banner; delete once it is no longer useful.
-  note: |-
-    page header image — 1920×360
-    연구실 사진 또는 시뮬레이션 스틸
 
 pageSize: 4 # member cards loaded at a time while scrolling (2-12)
 

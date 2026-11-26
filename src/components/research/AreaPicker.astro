@@ -6,11 +6,9 @@ import type { ResearchArea } from '../../lib/content';
 
 interface Props {
   areas: ResearchArea[];
-  /** Placeholder text containing {path}; shown on a card until its image exists. */
-  imageNote: string;
 }
 
-const { areas, imageNote } = Astro.props;
+const { areas } = Astro.props;
 ---
 
 <div class="cards">
@@ -23,7 +21,6 @@ const { areas, imageNote } = Astro.props;
           <span class="image placeholder" />
         )}
         <span class="scrim" />
-        {!area.image && <span class="note">{imageNote.replace('{path}', `/images/research/${area.id}.jpg`)}</span>}
         <span class="title">{area.title}</span>
       </button>
     ))
@@ -111,16 +108,6 @@ const { areas, imageNote } = Astro.props;
     50% {
       transform: scale(1.12);
     }
-  }
-
-  .note {
-    position: absolute;
-    top: var(--space-4);
-    right: 18px;
-    left: 18px;
-    font: 400 var(--fs-caption) / 1.5 var(--font-mono);
-    color: var(--ink-muted);
-    overflow-wrap: anywhere;
   }
 
   .title {

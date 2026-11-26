@@ -14,14 +14,12 @@ interface Props {
   more: { label: string; href: string };
   autoplay: boolean;
   intervalMs: number;
-  labels: { coverNote: string; previous: string; next: string; toggle: string };
+  labels: { previous: string; next: string; toggle: string };
 }
 
 const { title, posts, more, autoplay, intervalMs, labels } = Astro.props;
 const monthOf = (date: string) => date.slice(0, 7).replace('-', '.');
-// Until a post has a cover, the caption says where its file should go (as in the draft).
-const captionMeta = (post: GalleryPost) =>
-  [post.cover ? undefined : labels.coverNote.replace('{path}', `/images/gallery/${post.id}/01.jpg`), post.tags[0], monthOf(post.date)].filter(Boolean).join(' · ');
+const captionMeta = (post: GalleryPost) => [post.tags[0], monthOf(post.date)].filter(Boolean).join(' · ');
 ---
 
 <div class="gallery">

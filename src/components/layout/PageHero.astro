@@ -8,17 +8,14 @@ interface Props {
   title?: string;
   /** `tall`: more padding and a bottom-heavy scrim, for a hero that carries body text. */
   variant?: 'banner' | 'tall';
-  /** Describes the planned background image; shown top-right until a real image exists. */
-  note?: string;
 }
 
-const { title, variant = 'banner', note } = Astro.props;
+const { title, variant = 'banner' } = Astro.props;
 ---
 
 <section class:list={['hero', variant]}>
   <div class="stripes"></div>
   {variant === 'tall' && <div class="scrim" />}
-  {note && <div class="note">{note}</div>}
   <div class="container inner">
     <slot name="title">
       <h1 class="title">{title}</h1>
@@ -55,17 +52,6 @@ const { title, variant = 'banner', note } = Astro.props;
     background: var(--scrim-hero);
   }
 
-  .note {
-    position: absolute;
-    top: var(--space-4);
-    right: var(--space-6);
-    font: 400 var(--fs-caption) / 1.5 var(--font-mono);
-    color: var(--on-dark-muted);
-    text-align: right;
-    white-space: pre-line;
-    overflow-wrap: anywhere;
-  }
-
   .inner {
     position: relative;
     padding-block: 76px 60px;
@@ -89,10 +75,6 @@ const { title, variant = 'banner', note } = Astro.props;
     margin-top: 26px;
   }
   @media (max-width: 767px) {
-    .note {
-      display: none;
-    }
-
     .inner {
       padding-block: var(--space-12) var(--space-10);
     }

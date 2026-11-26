@@ -22,19 +22,10 @@ const headlineLines = hero.headline.split('\n');
             <div class="scrim" />
           </>
         ) : (
-          <>
-            <div class="stripes" />
-            {hero.backgroundNote && <div class="bg-note">{hero.backgroundNote}</div>}
-          </>
+          <div class="stripes" />
         )
       }
-      {
-        hero.logoNote && (
-          <div class="logo-slot">
-            <span class="logo-note">{hero.logoNote}</span>
-          </div>
-        )
-      }
+      {hero.logoSlot && <div class="logo-slot" />}
 
       <div class="intro">
         <h1 class="headline" style="--i: 0">{headlineLines.map((line, i) => (<>{i > 0 && <br />}{line}</>))}</h1>
@@ -91,36 +82,15 @@ const headlineLines = hero.headline.split('\n');
     background: var(--scrim-hero);
   }
 
-  .bg-note {
-    position: absolute;
-    top: 96px;
-    right: var(--space-12);
-    z-index: 1;
-    font: 400 var(--fs-caption) / 1.55 var(--font-mono);
-    color: var(--on-dark-muted);
-    text-align: right;
-    white-space: pre-line;
-    overflow-wrap: anywhere;
-  }
-
   .logo-slot {
     position: absolute;
     top: 100px;
     left: var(--space-12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 252px;
     height: 92px;
     border-radius: var(--radius-md);
     background: var(--on-dark-rule);
     box-shadow: inset 0 0 0 1px var(--on-dark-fill-strong);
-  }
-
-  .logo-note {
-    font: 400 var(--fs-caption) / 1.4 var(--font-mono);
-    color: var(--on-dark-muted);
-    overflow-wrap: anywhere;
   }
 
   .intro {
@@ -224,10 +194,6 @@ const headlineLines = hero.headline.split('\n');
       max-width: 640px;
     }
 
-    .bg-note {
-      top: calc(var(--header-h) + var(--space-4));
-    }
-
     .band {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--space-10);
@@ -240,10 +206,6 @@ const headlineLines = hero.headline.split('\n');
     .band {
       gap: var(--space-8);
       padding-inline: var(--gutter);
-    }
-
-    .bg-note {
-      display: none;
     }
 
     .logo-slot {

@@ -8,13 +8,12 @@ import { formatMonthName } from '../../lib/format';
 
 interface Props {
   publication: Publication;
-  labels: { figureMeta: string; figureNote: string };
+  labels: { figureMeta: string };
 }
 
 const { publication: pub, labels } = Astro.props;
 const ui = await getUi();
 const meta = labels.figureMeta.replace('{venue}', pub.venue).replace('{date}', formatMonthName(pub.month, pub.year));
-const note = labels.figureNote.replace('{path}', `/images/publications/${pub.id}.png`).replace('{ratio}', pub.figure.ratio.replace('/', ':'));
 ---
 
 <Modal id={`figure-${pub.id}`} label={pub.title} backdropClose maxWidth={920}>
@@ -29,7 +28,8 @@ const note = labels.figureNote.replace('{path}', `/images/publications/${pub.id}
       </button>
     </div>
     <div class="box" style={`--ratio: ${pub.figure.ratio}`}>
-      {pub.figure.image ? <Figure class="fig" src={pub.figure.image} alt={pub.figure.alt ?? ''} preset="pubLightbox" fit="contain" controls /> : <span class="note">{note}</span>}
+      {/* Without a figure the box stays a plain striped placeholder. */}
+      {pub.figure.image && <Figure class="fig" src={pub.figure.image} alt={pub.figure.alt ?? ''} preset="pubLightbox" fit="contain" controls />}
     </div>
   </div>
 </Modal>
@@ -103,12 +103,6 @@ const note = labels.figureNote.replace('{path}', `/images/publications/${pub.id}
   .fig {
     width: 100%;
     height: 100%;
-  }
-
-  .note {
-    font: 400 var(--fs-meta) / 1.6 var(--font-mono);
-    color: var(--gray-500);
-    overflow-wrap: anywhere;
   }
   @media (max-width: 767px) {
     .body {

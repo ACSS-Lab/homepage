@@ -20,11 +20,5 @@ filter:
 labels:
   # {n} is replaced with the number of photos.
   photoCount: "{n}+"
-  # Shown on a card until its cover is added. {path} is where the file should go.
-  coverNote: "cover — {path} · 4:3 cover"
-  # Shown in the viewer for a photo that is not uploaded yet.
-  photoNote: |-
-    photo — {path}
-    original aspect preserved · fitted to the 3:2 viewing frame without letterboxing
   # Caption under each photo in the viewer. {title}, {n} and {total} are replaced.
   caption: "{title} · {n} / {total}"

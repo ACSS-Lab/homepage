@@ -12,7 +12,7 @@ const [page, areas, nav] = await Promise.all([getPage('research-areas'), getRese
 ---
 
 <BaseLayout title={page.title}>
-  <PageHero title={page.hero.title} note={page.hero.note}>
+  <PageHero title={page.hero.title}>
     <HeroTabs slot="tabs" tabs={sectionTabs(nav, Astro.url.pathname)} />
   </PageHero>
 
@@ -28,7 +28,7 @@ const [page, areas, nav] = await Promise.all([getPage('research-areas'), getRese
           <span data-lang="ko" lang="ko">{page.hint.ko}</span>
         </span>
       </div>
-      <AreaPicker areas={areas} imageNote={page.labels.imageNote} />
+      <AreaPicker areas={areas} />
     </section>
 
     <section class="container detail" aria-live="polite">

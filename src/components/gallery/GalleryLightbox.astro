@@ -8,7 +8,7 @@ import { formatDate } from '../../lib/format';
 
 interface Props {
   post: GalleryPost;
-  labels: { photoNote: string; caption: string };
+  labels: { caption: string };
 }
 
 const { post, labels } = Astro.props;
@@ -16,7 +16,6 @@ const ui = await getUi();
 const total = post.photos.length;
 const pad = (n: number) => String(n).padStart(2, '0');
 const caption = (n: number) => labels.caption.replace('{title}', post.title).replace('{n}', pad(n)).replace('{total}', pad(total));
-const note = (n: number) => labels.photoNote.replace('{path}', `/images/gallery/${post.id}/${pad(n)}.jpg`);
 ---
 
 <Modal id={`gallery-${post.id}`} label={post.title} variant="fullscreen">
@@ -43,7 +42,8 @@ const note = (n: number) => labels.photoNote.replace('{path}', `/images/gallery/
           post.photos.map((photo) => (
             <div class="shot" data-shot={photo.n - 1} hidden={photo.n !== 1}>
               <div class="frame">
-                {photo.src ? <Figure class="photo" src={photo.src} alt={caption(photo.n)} preset="galleryStage" /> : <span class="note">{note(photo.n)}</span>}
+                {/* A photo that is not uploaded yet leaves the frame a plain striped placeholder. */}
+                {photo.src && <Figure class="photo" src={photo.src} alt={caption(photo.n)} preset="galleryStage" />}
               </div>
               <div class="caption">{caption(photo.n)}</div>
             </div>
@@ -207,12 +207,6 @@ const note = (n: number) => labels.photoNote.replace('{path}', `/images/gallery/
 
   .frame:has(> .photo) {
     padding: 0;
-  }
-
-  .note {
-    font: 400 var(--fs-caption) / 1.7 var(--font-sans);
-    color: var(--on-dark-faint);
-    white-space: pre-line;
   }
 
   .caption {

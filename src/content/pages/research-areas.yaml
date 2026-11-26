@@ -6,10 +6,6 @@ title: Research Areas # browser tab title
 
 hero:
   title: Research Areas
-  # Describes the background image planned for the banner; delete once it is no longer useful.
-  note: |-
-    page header image — 1920×360
-    research or simulation still
 
 heading:
   en: Our Research Directions
@@ -24,5 +20,3 @@ labels:
   applications: Application Areas
   papers: Related Papers
   readPaper: Read paper
-  # Shown on a card until its image is added. {path} is where the image file should go.
-  imageNote: "research image — {path}"

@@ -17,7 +17,7 @@ interface Props {
   title: string;
   autoplay: boolean;
   intervalMs: number;
-  labels: { selectedBadge: string; figureNote: string; openFigure: string; linkAria: string; links: Record<string, string> };
+  labels: { selectedBadge: string; openFigure: string; linkAria: string; links: Record<string, string> };
 }
 
 const { publications, areas, title, autoplay, intervalMs, labels } = Astro.props;
@@ -25,7 +25,6 @@ const ui = await getUi();
 const areaOrder = [...areas.keys()];
 const sortedAreas = (codes: string[]) => [...codes].sort((a, b) => areaOrder.indexOf(a) - areaOrder.indexOf(b));
 // The dots' progress animation (only rendered when autoplay is on) is the autoplay clock.
-const figureNote = (pub: Publication) => labels.figureNote.replace('{path}', `/images/publications/${pub.id}.png`).replace('{ratio}', pub.figure.ratio.replace('/', ':'));
 ---
 
 <section class="container featured">
@@ -36,7 +35,7 @@ const figureNote = (pub: Publication) => labels.figureNote.replace('{path}', `/i
         {
           publications.map((pub) => (
             <div class="slide">
-              <FigureButton class="figure" dialogId={`figure-${pub.id}`} label={labels.openFigure.replace('{title}', pub.title)} src={pub.figure.image} alt={pub.figure.alt ?? ''} note={figureNote(pub)} preset="pubFeatured" />
+              <FigureButton class="figure" dialogId={`figure-${pub.id}`} label={labels.openFigure.replace('{title}', pub.title)} src={pub.figure.image} alt={pub.figure.alt ?? ''} preset="pubFeatured" />
               <div class="text">
                 <div class="meta">
                   <Badge tone="accent">{labels.selectedBadge}</Badge>

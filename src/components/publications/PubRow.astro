@@ -13,7 +13,7 @@ import { formatMonthName } from '../../lib/format';
 interface Props {
   publication: Publication;
   areas: Map<string, Area>;
-  labels: { selectedBadge: string; figureNote: string; openFigure: string; linkAria: string; links: Record<string, string> };
+  labels: { selectedBadge: string; openFigure: string; linkAria: string; links: Record<string, string> };
   hidden?: boolean;
 }
 
@@ -24,7 +24,6 @@ const areaOrder = [...areas.keys()];
 const areaCodes = [...pub.areas].sort((a, b) => areaOrder.indexOf(a) - areaOrder.indexOf(b));
 const areaLabels = areaCodes.map((code) => areas.get(code)?.label ?? code);
 const haystack = [pub.title, pub.authors.join(', '), pub.venue, ...areaLabels].join(' ').toLowerCase();
-const figureNote = labels.figureNote.replace('{path}', `/images/publications/${pub.id}.png`).replace('{ratio}', pub.figure.ratio.replace('/', ':'));
 const detailsId = `pub-${pub.id}-details`;
 ---
 
@@ -45,7 +44,7 @@ const detailsId = `pub-${pub.id}-details`;
       </span>
     </button>
     <div class="figure-slot">
-      <FigureButton dialogId={`figure-${pub.id}`} label={labels.openFigure.replace('{title}', pub.title)} src={pub.figure.image} alt={pub.figure.alt ?? ''} note={figureNote} preset="pubThumb" />
+      <FigureButton dialogId={`figure-${pub.id}`} label={labels.openFigure.replace('{title}', pub.title)} src={pub.figure.image} alt={pub.figure.alt ?? ''} preset="pubThumb" />
     </div>
   </div>
   <div class="details" id={detailsId} hidden>

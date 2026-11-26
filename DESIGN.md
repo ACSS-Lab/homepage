@@ -85,7 +85,9 @@
 > `--area-control #2B4C9B` · `--area-uncertainty #C0453F` · `--area-learning #6F5EA0` · `--area-modeling #B93E93` · `--area-estimation #C97A12` · `--area-applications #79828E`.
 > Adding a family means adding a token here and in `tokens.css`. (`estimation` and `applications` measure below 4.5:1 with 12px white text; darken them when the taxonomy is next revised.)
 >
-> **Image placeholders**: until a real photo/figure exists, its slot shows the `--ph` stripes (`--ph-dark` on dark surfaces) with a short mono note describing the intended image. The slot keeps its final aspect ratio so the layout doesn't shift when the asset arrives.
+> **Image placeholders**: until a real photo/figure exists, its slot shows the `--ph` stripes (`--ph-dark` on dark surfaces) and nothing else.
+> A placeholder never carries text: no file path, no size, no description of the intended image.
+> The slot keeps its final aspect ratio so the layout doesn't shift when the asset arrives.
 >
 > **Media**: every photo, figure and loop renders through `Figure`, which emits an image as WebP at the widths of its named preset (`MEDIA_SLOTS` in `src/lib/media.ts`) with a matching `sizes`, so each box downloads only the variant it needs.
 > A `.mp4` (publication figures, project covers, the home hero) is a muted loop with no sound that plays while in view; under `prefers-reduced-motion` it stays on its poster (the same-named `.jpg`) and, unless it is a decorative background, shows controls.
@@ -100,7 +102,7 @@
 - **Font**: avoid system fonts; use **Pretendard** (Korean + Latin, free). Self-hosted from the pinned `pretendard` npm package — no font CDN.
   ```css
   --font-sans: "Pretendard Variable", "Pretendard", "Spoqa Han Sans Neo", "Noto Sans KR", sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;  /* placeholder notes, venue lines */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;  /* venue lines, the map note */
   ```
 - **Baseline feel**: Toss uses a dense 13px baseline, but we have lots of *reading* content, so **body is 16px** for legibility. Only dense areas (lists/meta) drop to 13-14px.
 - **12px is for low-priority info only** (captions, footnotes, disclaimers).
@@ -142,7 +144,7 @@
 ### Per-page density
 - **Home**: at `xl` and above one desktop screen (min height 1170px): a navy hero that fills the space above a white band.
   Hero: logo slot top-left, headline + lede + CTA bottom-left, a floating Notice card bottom-right.
-  Behind it an optional full-bleed image or silent loop (`hero.background`, the one place a loop may fill a screen) under `--scrim-hero`; until one exists, `--stripe-dark` and a mono note describing it.
+  Behind it an optional full-bleed image or silent loop (`hero.background`, the one place a loop may fill a screen) under `--scrim-hero`; until one exists, plain `--stripe-dark`.
   Band: the Highlights feed (dense rows) on the left, a 16:9 gallery carousel (512px) on the right.
   Below `xl` the screen unstacks: hero (headline, lede, CTA), the notice card full width, then Highlights and the gallery one under the other; below `md` the feed drops its meta column.
 - **Publications**: filter chips + publication **list rows** (title, authors, venue, year). Don't turn these into cards.
@@ -158,7 +160,7 @@ What changes at each breakpoint:
 |---|---|
 | `xl` 1280 | Home unstacks: hero, full-width notice card, highlights, gallery. |
 | `lg` 1024 | Filter sidebar becomes the mobile filter bar; editorial rows go to two columns; gallery grid 3-up; the interns title column stacks. |
-| `md` 768 | Mobile type scale, `--gutter` 16px and `--space-section` 48px; menu drawer; two-column card grids, text/figure rows, contact bands and area details stack; the track carousel shows one card; the area cards become a swipeable strip; gallery grid 2-up; banner placeholder notes hidden; the home feed drops its meta column. |
+| `md` 768 | Mobile type scale, `--gutter` 16px and `--space-section` 48px; menu drawer; two-column card grids, text/figure rows, contact bands and area details stack; the track carousel shows one card; the area cards become a swipeable strip; gallery grid 2-up; the home feed drops its meta column. |
 | `sm` 640 | Row-internal grids stack: publication figure under the text, person photo track 96px, intern topic under the name, tab pill and underline-tab rail wrap. |
 
 Card grids that share a column with a sidebar (Team, PI & Staffs) do not use a breakpoint at all: `repeat(auto-fill, minmax(min(400px, 100%), 1fr))` gives two cards whenever two 400px cards fit.
@@ -180,7 +182,7 @@ Card grids that share a column with a sidebar (Team, PI & Staffs) do not use a b
 ### Home: Notice card, Highlights feed, Gallery preview
 - **Notice card**: 520px white `--radius-lg` card with `--shadow-lg` floating over the hero; ruled rows of date (72px, caption gray) / title / optional accent badge.
 - **Highlights feed**: rows that stretch to share the column height: uppercase navy kind label (56px), title, ellipsized meta (176px), month (52px); `--bg` hover. Heading has a "Go to Research" arrow link.
-- **Gallery preview**: 16:9 slides with a `--glass` caption chip (title, then note · tag · month) and a glass control pill bottom-right: 22px chevron buttons, compact dots (4px, current one a 28px bar that fills navy over the interval), and a play/pause toggle. Autoplays every 3s; paused shows a static 40% bar; reduced motion starts paused.
+- **Gallery preview**: 16:9 slides with a `--glass` caption chip (title, then tag · month) and a glass control pill bottom-right: 22px chevron buttons, compact dots (4px, current one a 28px bar that fills navy over the interval), and a play/pause toggle. Autoplays every 3s; paused shows a static 40% bar; reduced motion starts paused.
 
 ### Graphic highlights (icons / figures)
 - Icons/illustrations/research figures **only where they carry real symbolic meaning.** No decoration.
@@ -198,7 +200,7 @@ Card grids that share a column with a sidebar (Team, PI & Staffs) do not use a b
 - **Dropdown on mouseover and on keyboard focus.** Full keyboard operation: Tab/Enter, arrows to move through a menu, Esc to close it.
 
 ### Page banner + section tabs
-- Every page except Home and Contact opens with a dark banner (`PageHero`): `--navy-900` + `--stripe-dark`, centered `--fs-display` title. Until a background image exists, a mono note top-right describes the intended image.
+- Every page except Home and Contact opens with a dark banner (`PageHero`): `--navy-900` + `--stripe-dark`, centered `--fs-display` title.
 - Under the title sits a segmented pill (`HeroTabs`) listing the sibling pages of the current menu section — it is generated from `navigation.yaml`, not authored per page. Current tab: white pill, `--navy-900` text. A grouped tab opens a rounded dropdown (`--radius-lg`, `--shadow-lg`) on hover/focus, with optional counts.
 
 - **Tall variant** (Our Vision): more padding plus `--scrim-hero`, carrying a lede and two text columns with CTAs (one column below `md`).
@@ -369,7 +371,7 @@ Touch targets are 44px (`Button` grows to 44px on coarse pointers).
 
 ## 8. Logo (slated for redesign)
 
-- The logo is being redesigned (confirmed). No logo file is in the repo yet: the header uses a plain navy mark and the home hero shows a placeholder slot until the new one ships.
+- The logo is being redesigned (confirmed). No logo file is in the repo yet: the header uses a plain navy mark and the home hero shows an empty placeholder slot (`hero.logoSlot` in `pages/home.yaml`) until the new one ships.
 - Store assets in `src/assets/images/logo/` as SVG (preferred) + PNG. Separate light/dark (navy/white) and horizontal/symbol variants.
 - The large hero logo and the left "logo-image button" reuse the same symbol asset.
 

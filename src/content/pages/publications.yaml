@@ -34,8 +34,6 @@ list:
 
 labels:
   selectedBadge: Selected
-  # Shown in the figure slot until the image is added. {path} and {ratio} are replaced.
-  figureNote: "figure — {path} · {ratio}"
   # Accessible names. {title} is replaced with the paper title.
   openFigure: "Open figure — {title}"
   # Meta line in the figure window. {venue} and {date} are replaced.

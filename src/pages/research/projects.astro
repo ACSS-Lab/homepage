@@ -24,7 +24,7 @@ const tabs = [
 ---
 
 <BaseLayout title={page.title}>
-  <PageHero title={page.hero.title} note={page.hero.note}>
+  <PageHero title={page.hero.title}>
     <HeroTabs slot="tabs" tabs={sectionTabs(nav, Astro.url.pathname)} />
     <p class="count">{countLine}</p>
   </PageHero>

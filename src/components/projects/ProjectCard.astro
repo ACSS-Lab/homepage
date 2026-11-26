@@ -8,12 +8,11 @@ import { formatPeriod } from '../../lib/format';
 interface Props {
   project: Project;
   statusLabel: string;
-  labels: { agency: string; period: string; openDetail: string; coverNote: string };
+  labels: { agency: string; period: string; openDetail: string };
   index: number;
 }
 
 const { project, statusLabel, labels, index } = Astro.props;
-const coverNote = labels.coverNote.replace('{path}', `/images/projects/${project.id}.jpg`);
 ---
 
 <button
@@ -30,7 +29,7 @@ const coverNote = labels.coverNote.replace('{path}', `/images/projects/${project
   </span>
   <span class="title">{project.title}</span>
   <span class="cover-frame">
-    <Figure class="cover" src={project.cover} alt="" note={coverNote} preset="projectCover" />
+    <Figure class="cover" src={project.cover} alt="" preset="projectCover" />
   </span>
   <span class="meta">
     <span class="meta-label">{labels.agency}</span>
@@ -91,7 +90,6 @@ const coverNote = labels.coverNote.replace('{path}', `/images/projects/${project
   }
 
   .cover {
-    --figure-pad: 10px;
     aspect-ratio: 16 / 9;
     transition: transform var(--dur-emph) var(--ease);
   }

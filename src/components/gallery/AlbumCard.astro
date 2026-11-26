@@ -8,18 +8,17 @@ import { formatDate } from '../../lib/format';
 
 interface Props {
   post: GalleryPost;
-  labels: { photoCount: string; coverNote: string };
+  labels: { photoCount: string };
   showTags: boolean;
   index: number;
 }
 
 const { post, labels, showTags, index } = Astro.props;
-const coverNote = labels.coverNote.replace('{path}', `/images/gallery/${post.id}/01.jpg`);
 ---
 
 <button class="card rise" type="button" style={`--i: ${index}`} data-item data-filter={post.tags.join(' ')} data-modal-open={`gallery-${post.id}`}>
   <span class="cover-frame">
-    <Figure class="cover" src={post.cover} alt="" note={coverNote} preset="albumCover" />
+    <Figure class="cover" src={post.cover} alt="" preset="albumCover" />
     <span class="count">{labels.photoCount.replace('{n}', String(post.photos.length))}</span>
   </span>
   <span class="title">{post.title}</span>
@@ -65,7 +64,6 @@ const coverNote = labels.coverNote.replace('{path}', `/images/gallery/${post.id}
   }
 
   .cover {
-    --figure-pad: 10px;
     aspect-ratio: 4 / 3;
     transition: transform var(--dur-emph) var(--ease);
   }

@@ -33,11 +33,10 @@ interface Props {
 
 const { person, size = 'md', eyebrow, subtitle, aside, class: className, ...rest } = Astro.props;
 const labels = (await getUi()).person;
-const photoNote = labels.photoNote.replace('{path}', `/images/team/${person.id}.jpg`);
 ---
 
 <article class:list={['card', size, className]} {...rest}>
-  <Figure class="photo" src={person.photo} alt={person.name} note={photoNote} preset={size === 'lg' ? 'teamLg' : 'teamMd'} />
+  <Figure class="photo" src={person.photo} alt={person.name} preset={size === 'lg' ? 'teamLg' : 'teamMd'} />
   <div class="body">
     {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
     <div class="top">

@@ -1,9 +1,8 @@
 ---
 // A media slot. Shows the image, or the silent video loop, behind a content
-// path (`/images/...`, see lib/media.ts); until the file exists, the striped
-// placeholder with a note saying which file belongs here. The caller sizes the
-// box (width/height or aspect-ratio, border-radius) through `class`, and may set
-// `--figure-pad` to change the placeholder's inner padding.
+// path (`/images/...`, see lib/media.ts); until the file exists, a plain striped
+// placeholder with no text in it. The caller sizes the box (width/height or
+// aspect-ratio, border-radius) through `class`.
 //
 // An image is emitted as WebP at the widths of its `preset`, with the matching
 // `sizes`, so the browser downloads the variant its box needs. A video carries
@@ -18,8 +17,6 @@ interface Props {
   alt: string;
   /** The box this figure fills; picks the srcset widths and `sizes` (lib/media.ts). */
   preset: MediaSlot;
-  /** Placeholder text, e.g. where to put the file. */
-  note?: string;
   /** `dark` for placeholders on navy surfaces. */
   tone?: 'light' | 'dark';
   /** `contain` shows the whole image inside the box instead of filling it. */
@@ -34,7 +31,7 @@ interface Props {
   class?: string;
 }
 
-const { src, alt, preset, note, tone = 'light', fit = 'cover', priority = false, controls = false, preload = 'metadata', class: className, ...rest } = Astro.props;
+const { src, alt, preset, tone = 'light', fit = 'cover', priority = false, controls = false, preload = 'metadata', class: className, ...rest } = Astro.props;
 const { sizes, widths } = MEDIA_SLOTS[preset];
 const media = src ? findMedia(src) : undefined;
 // The poster is emitted at the largest width the slot can show.
@@ -53,9 +50,7 @@ const poster = media?.kind === 'video' && media.poster ? (await getImage({ src: 
       )}
     </span>
   ) : (
-    <span class:list={['figure', 'placeholder', tone, className]} role="img" aria-label={alt} {...rest}>
-      {note && <span class="note">{note}</span>}
-    </span>
+    <span class:list={['figure', 'placeholder', tone, className]} role="img" aria-label={alt} {...rest} />
   )
 }
 
@@ -82,23 +77,10 @@ const poster = media?.kind === 'video' && media.poster ? (await getImage({ src: 
   }
 
   .placeholder {
-    display: flex;
-    align-items: flex-end;
-    padding: var(--figure-pad, var(--space-2));
     background: var(--ph);
   }
 
   .placeholder.dark {
     background: var(--ph-dark);
-  }
-
-  .note {
-    font: 400 var(--fs-caption) / 1.4 var(--font-mono);
-    color: var(--gray-500);
-    overflow-wrap: anywhere;
-  }
-
-  .dark > .note {
-    color: var(--on-dark-muted);
   }
 </style>

@@ -112,7 +112,6 @@ const ui = defineCollection({
     person: z.object({
       email: z.string(),
       links: z.object({ homepage: z.string(), linkedin: z.string(), scholar: z.string() }),
-      photoNote: z.string().includes('{path}'),
     }),
   }),
 });
@@ -365,14 +364,13 @@ const news = defineCollection({
 // One file per page; `page` must equal the file name.
 // ----------------------------------------------------------------------------
 
-/** Dark banner at the top of a page. `note` describes the intended background image until one exists. */
-const hero = z.object({ title: z.string(), note: z.string().optional() });
+/** Dark banner at the top of a page. */
+const hero = z.object({ title: z.string() });
 
-/** An image slot: `image` once the file exists; until then `note` is shown in a striped placeholder. */
+/** An image slot: `image` once the file exists; until then a striped placeholder is shown. */
 const figure = z.object({
   image: imagePath.optional(),
   alt: z.string(),
-  note: z.string().optional(),
   caption: z.string().optional(),
 });
 
@@ -402,7 +400,6 @@ const pages = defineCollection({
           intro: z.string(),
           speed: z.number().int().min(10).max(120).default(42), // ms per character
         }),
-        note: z.string().optional(),
         lede: bilingual,
         columns: z.array(z.object({ heading: bilingual, body: bilingual, cta })).length(2),
       }),
@@ -416,8 +413,7 @@ const pages = defineCollection({
         lede: z.string(),
         cta,
         background: mediaPath.optional(), // image or silent .mp4 loop behind the hero; a same-named .jpg is the poster
-        backgroundNote: z.string().optional(), // shown until `background` is set
-        logoNote: z.string().optional(),
+        logoSlot: z.boolean().default(false), // empty box where the new logo will go
       }),
       notices: z.object({ title: z.string(), count: z.number().int().min(1).max(5).default(3) }),
       highlights: z.object({
@@ -433,7 +429,6 @@ const pages = defineCollection({
         autoplay: z.boolean().default(true),
         intervalMs: z.number().int().min(1000).max(30000).default(3000),
         link: cta,
-        coverNote: z.string().includes('{path}'),
         previous: z.string(),
         next: z.string(),
         toggle: z.string(),
@@ -468,7 +463,7 @@ const pages = defineCollection({
     z.object({
       page: z.literal('publications'),
       title: z.string(),
-      hero: z.object({ title: z.string(), note: z.string().optional(), countLine: z.string() }),
+      hero: z.object({ title: z.string(), countLine: z.string() }),
       pageSize: z.number().int().min(2).max(20).default(6),
       featured: z.object({
         show: z.boolean().default(true),
@@ -486,7 +481,6 @@ const pages = defineCollection({
       }),
       labels: z.object({
         selectedBadge: z.string(),
-        figureNote: z.string().includes('{path}'),
         openFigure: z.string().includes('{title}'),
         figureMeta: z.string(),
         linkAria: z.string().includes('{label}'),
@@ -496,7 +490,7 @@ const pages = defineCollection({
     z.object({
       page: z.literal('projects'),
       title: z.string(),
-      hero: z.object({ title: z.string(), note: z.string().optional(), countLine: z.string() }),
+      hero: z.object({ title: z.string(), countLine: z.string() }),
       perPage: z.number().int().min(2).max(12).default(4),
       filter: z.object({ label: z.string(), all: z.string(), ongoing: z.string(), done: z.string(), empty: z.string() }),
       labels: z.object({
@@ -507,20 +501,17 @@ const pages = defineCollection({
         related: z.string(),
         relatedHint: z.string(),
         openDetail: z.string().includes('{label}'),
-        coverNote: z.string().includes('{path}'),
       }),
     }),
     z.object({
       page: z.literal('gallery'),
       title: z.string(),
-      hero: z.object({ title: z.string(), note: z.string().optional(), countLine: z.string() }),
+      hero: z.object({ title: z.string(), countLine: z.string() }),
       perPage: z.number().int().min(4).max(16).default(8),
       showTags: z.boolean().default(true),
       filter: z.object({ label: z.string(), all: z.string(), empty: z.string() }),
       labels: z.object({
         photoCount: z.string().includes('{n}'),
-        coverNote: z.string().includes('{path}'),
-        photoNote: z.string().includes('{path}'),
         caption: z.string(),
       }),
     }),
@@ -569,7 +560,6 @@ const pages = defineCollection({
         applications: z.string(),
         papers: z.string(),
         readPaper: z.string(),
-        imageNote: z.string().includes('{path}'),
       }),
     }),
   ]),
