@@ -212,9 +212,9 @@ Card grids that share a column with a sidebar (Team, PI & Staffs) do not use a b
 - Three tabs selected by the URL fragment (`#current`, `#interns`, `#alumni`) from the banner's Members dropdown, whose entries carry counts and highlight the tab in view. The header menu links to the same fragments and highlights the one in view; the Team entry itself opens PI & Staffs.
 - **Current Members**: role sections (dot-and-rule heading with a gray count), `PersonCard`s two per row while the column fits two 400px cards (one otherwise), with join date top-right, an uppercase "Research interest" label and `AreaChip`s (family-colored code chips; full name on hover).
   A lab representative gets an uppercase `--navy-100` badge next to the name.
-- **Interns**: a 280px title column (stacked below `lg`) beside ruled lists (name + Korean name / topic / term) instead of cards, one per kind of intern (Research, Undergraduate) under a dot-and-rule heading with a gray count; below `sm` the topic wraps under the name.
+- **Interns**: a 280px title column (stacked below `lg`) beside ruled lists (name + Korean name / topic / term) instead of cards, one per kind of intern (Research, Undergraduate) under a dot-and-rule heading without a count; below `sm` the topic wraps under the name.
   A kind with nobody in it is left out, and a single line of text stands in when there is no current intern.
-  Under a `--gray-300` rule, past interns (`alumni: true`) repeat the same layout as a collapsed section: its title is a 44px-tall button with a gray count and a chevron that rotates when open (`scripts/accordion.ts`).
+  Under a `--gray-300` rule, past interns (`alumni: true`) repeat the same layout as a collapsed section: its title is a 44px-tall button with a chevron that rotates when open (`scripts/accordion.ts`).
   The section is left out while there are no past interns, and the tab's count in the Members dropdown is the current interns only.
 - **Alumni**: degree sections of `PersonCard`s showing years in the lab, degree title, an optional note and "Current affiliation".
 - A `--gray-100` join banner with a primary button closes the page except on the Alumni tab.

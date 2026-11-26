@@ -101,7 +101,6 @@ const internGroups = (interns: typeof team.interns) =>
               {/* Toggled by scripts/accordion.ts, which FilterLayout starts for the whole page. */}
               <button class="past-toggle" type="button" aria-expanded="false" aria-controls="past-interns" data-accordion>
                 {page.interns.alumni.title}
-                <span class="past-count">{team.pastInterns.length}</span>
                 <Icon name="chevron-down" size={18} class="past-caret" />
               </button>
             </h2>
@@ -214,12 +213,6 @@ const internGroups = (interns: typeof team.interns) =>
 
   .past-toggle:hover {
     color: var(--navy-600);
-  }
-
-  .past-count {
-    font: 400 var(--fs-caption) / 1.4 var(--font-sans);
-    letter-spacing: 0;
-    color: var(--gray-500);
   }
 
   .past-caret {

@@ -1,0 +1,9 @@
+group: intern
+kind: research
+name: Dain Moon
+nameKo: 문다인
+year: 2026
+term: summer
+topics:
+  - Benchmarking stochastic MPC solvers
+alumni: true

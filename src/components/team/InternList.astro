@@ -22,7 +22,7 @@ const { groups, terms, empty } = Astro.props;
   {
     groups.map((group) => (
       <div class="group">
-        <SectionHeading as="h3" title={group.title} count={group.people.length} />
+        <SectionHeading as="h3" title={group.title} />
         <ul class="list">
           {group.people.map((intern) => (
             <li class="intern">

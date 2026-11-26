@@ -326,6 +326,13 @@ collections:
     sortable_fields:
       fields: [year, name, kind]
       default: { field: year, direction: descending }
+    view_filters:
+      - { label: Research interns, field: kind, pattern: '^research$' }
+      - { label: Undergraduate interns, field: kind, pattern: '^undergraduate$' }
+      - { label: Alumni, field: alumni, pattern: true }
+    view_groups:
+      - { label: Kind, field: kind }
+      - { label: Year, field: year }
     fields:
       - { name: group, widget: hidden, default: intern }
       - { name: name, label: Name, widget: string }
@@ -337,6 +344,7 @@ collections:
           - { label: Research intern, value: research }
           - { label: Undergraduate intern, value: undergraduate }
         hint: The sub-list on the Interns tab.
+      - { name: alumni, label: Alumni, widget: boolean, default: false, required: false, hint: 'Switch on once the internship is over; it moves them to the collapsed Alumni list.' }
       - { name: year, label: Year, widget: number, value_type: int, min: 2000, max: 2100 }
       - { name: term, label: Term, widget: select, options: [spring, summer, fall, winter] }
       - name: topics
@@ -345,7 +353,6 @@ collections:
         min: 1
         field: { name: topic, label: Topic, widget: string }
         hint: One line per topic on what they worked on (free text).
-      - { name: alumni, label: Alumni, widget: boolean, default: false, required: false, hint: 'Switch on once the internship is over; it moves them to the collapsed Alumni list.' }
       - { name: email, label: E-mail, widget: string, type: email, required: false }
       - name: photo
         label: Photo
