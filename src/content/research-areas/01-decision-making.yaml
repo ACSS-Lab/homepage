@@ -12,7 +12,7 @@ subs:
       en: >-
         Develop generative AI-based planning algorithms for autonomous (robotic) agents that fundamentally encode safety/stability constraints without losing multimodal flexibility. Current methods of investigation include designing hierarchical safety filters and distributional control formulations.
       ko: >-
-        multimodal한 유연성을 잃지 않으면서 safety/stability 제약을 근본적으로 내재화하는, generative AI 기반 planning 알고리즘을 자율(로봇) 에이전트를 위해 개발합니다. 현재 검토 중인 방법으로는 hierarchical safety filter 설계와 distributional control 정식화가 있습니다.
+        자율(로봇) 에이전트를 위한 generative AI 기반 planning 알고리즘을 개발합니다. multimodal한 유연성을 잃지 않으면서 safety/stability 제약을 근본적으로 내재화하는 알고리즘입니다. 현재 검토 중인 방법에는 hierarchical safety filter 설계와 distributional control 정식화가 있습니다.
     applications:
       - Generative AI for robotics
       - Diffusion/Flow-matching
@@ -30,7 +30,7 @@ subs:
       en: >-
         Develop path-planners that are robust and adaptive especially against nonstationary uncertainties, by combining both model-based and data-driven methods. Current methods of investigation include classical set prediction & propagation methods, learning-based OOD detectors (e.g., random network distillation), and online reinforcement learning.
       ko: >-
-        model-based 방법과 data-driven 방법을 결합해, 특히 nonstationary한 불확실성에 대해 robust하고 adaptive한 path-planner를 개발합니다. 현재 검토 중인 방법으로는 고전적인 set prediction & propagation, learning-based OOD detector(예: random network distillation), online reinforcement learning이 있습니다.
+        model-based 방법과 data-driven 방법을 결합해 특히 nonstationary한 불확실성에 robust하고 adaptive한 path-planner를 개발합니다. 현재 검토 중인 방법으로는 고전적인 set prediction & propagation, learning-based OOD detector(예: random network distillation), online reinforcement learning이 있습니다.
     applications:
       - Fault-tolerant systems
       - OOD detection for control

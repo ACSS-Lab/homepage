@@ -24,7 +24,7 @@ hero:
         ko: 실제 환경의 자율성
       body:
         en: Limited data, model mismatch, faults, and out-of-distribution (OOD) behavior demand methods that are practically effective and theoretically reliable.
-        ko: 제한된 데이터, 모델 불일치, 고장, out-of-distribution(OOD) 거동은 실제로 효과적이면서 이론적으로도 신뢰할 수 있는 방법을 요구합니다.
+        ko: 제한된 데이터, 모델 불일치, 고장, out-of-distribution(OOD) 거동을 다루려면 실제로 효과적이면서 이론적으로도 신뢰할 수 있는 방법이 필요합니다.
       cta:
         label: Join Us
         href: /contact/
@@ -47,11 +47,11 @@ sections:
     figure:
       # image: /images/vision/layperson.jpg   (3:4; add once the file exists)
       alt: An intersection shared by pedestrians, cyclists and vehicles
-      caption: Fig 1. 일상의 이동에 섞여 있는 불확실성. alt 텍스트 필수.
+      caption: Fig 1.
   - id: technical
     heading:
       en: Some Technical Background
       ko: 기술적 배경
     figure:
       alt: The spectrum between model-based and model-free methods
-      caption: Fig 2. 구조와 데이터 주도성 사이의 스펙트럼. 캡션·alt 텍스트 필수.
+      caption: Fig 2.
