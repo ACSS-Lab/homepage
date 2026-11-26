@@ -3,5 +3,9 @@ name: Hyeongmin Choe
 nameKo: 최형민
 role: ms
 joined: 2025-02
+topics:
+  - StochCtrl
+  - DMC
+representative: false
 email: hyeongmin@kaist.ac.kr
-topics: [StochCtrl, DMC]
+photo: /images/team/choehyeongmin.webp
