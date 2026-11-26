@@ -3,7 +3,12 @@ name: Hyewon Choi
 nameKo: 최혜원
 role: ms
 joined: 2024-11
+topics:
+  - OnLearn
+  - Robot
+  - GenModels
+representative: false
 email: hyewon@kaist.ac.kr
-topics: [OnLearn, Robot, GenModels]
+photo: /images/team/choihyewon.webp
 links:
   homepage: https://example.com/
