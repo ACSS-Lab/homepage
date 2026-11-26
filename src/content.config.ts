@@ -413,7 +413,6 @@ const pages = defineCollection({
         lede: z.string(),
         cta,
         background: mediaPath.optional(), // image or silent .mp4 loop behind the hero; a same-named .jpg is the poster
-        logoSlot: z.boolean().default(false), // empty box where the new logo will go
       }),
       notices: z.object({ title: z.string(), count: z.number().int().min(1).max(5).default(3) }),
       highlights: z.object({

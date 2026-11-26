@@ -182,7 +182,6 @@ If you're unsure which field takes what, copy the "Ask Claude" prompt below.
 - **Home hero background** (`pages/home.yaml`, `hero.background`): put an image or a short silent `.mp4` loop at `src/assets/images/home/hero.jpg` or `hero.mp4` and set `background: /images/home/hero.mp4`.
   With a loop, a same-named `hero.jpg` (or `hero.webp`) next to it is shown until it plays.
   Until `background` is set, the hero shows plain navy stripes.
-  `hero.logoSlot: true` keeps the empty box where the new logo will go; set it to `false` to hide the box.
 
 ### 3-11. Edit the Research Areas page
 - Files: `src/content/research-areas/` — one file per area, shown in **file-name order** (keep the number prefix: `01-...`, `02-...`). Copy `_template.yaml` to add one. The page lays the cards out three to a row.

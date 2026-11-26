@@ -143,7 +143,7 @@
 
 ### Per-page density
 - **Home**: at `xl` and above one desktop screen (min height 1170px): a navy hero that fills the space above a white band.
-  Hero: logo slot top-left, headline + lede + CTA bottom-left, a floating Notice card bottom-right.
+  Hero: headline + lede + CTA bottom-left, a floating Notice card bottom-right.
   Behind it an optional full-bleed image or silent loop (`hero.background`, the one place a loop may fill a screen) under `--scrim-hero`; until one exists, plain `--stripe-dark`.
   Band: the Highlights feed (dense rows) on the left, a 16:9 gallery carousel (512px) on the right.
   Below `xl` the screen unstacks: hero (headline, lede, CTA), the notice card full width, then Highlights and the gallery one under the other; below `md` the feed drops its meta column.
@@ -371,7 +371,7 @@ Touch targets are 44px (`Button` grows to 44px on coarse pointers).
 
 ## 8. Logo (slated for redesign)
 
-- The logo is being redesigned (confirmed). No logo file is in the repo yet: the header uses a plain navy mark and the home hero shows an empty placeholder slot (`hero.logoSlot` in `pages/home.yaml`) until the new one ships.
+- The logo is being redesigned (confirmed). No logo file is in the repo yet: the header uses a plain navy mark and the home hero has no logo slot until the new one ships.
 - Store assets in `src/assets/images/logo/` as SVG (preferred) + PNG. Separate light/dark (navy/white) and horizontal/symbol variants.
 - The large hero logo and the left "logo-image button" reuse the same symbol asset.
 

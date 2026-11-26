@@ -16,7 +16,6 @@ hero:
   # Optional: an image or a short silent .mp4 loop behind the hero. Put the file at
   # src/assets/images/home/; a same-named hero.jpg next to hero.mp4 is shown until the loop plays.
   # background: /images/home/hero.mp4
-  logoSlot: true # empty box top-left where the new logo will go; set to false to hide it
 
 notices:
   title: Notice

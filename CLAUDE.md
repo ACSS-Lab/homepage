@@ -25,6 +25,7 @@ Node 22 or newer is required, and the shell's default Node may be older.
 Always chain `nvm use && ` in front of every `npm` command, in docs and when you run one; `nvm use` reads `.nvmrc`.
 If `nvm` is not a function in your shell, run `source ~/.nvm/nvm.sh` first.
 When you need the dev server yourself, start it detached with `npx astro dev --background` and manage it with `npx astro dev stop | status | logs`.
+If `astro dev` shows stale or missing content after a schema change or a branch switch, restart it with `nvm use && npm run dev -- --force`; the build is not affected.
 
 ## Rules that always apply
 
@@ -78,7 +79,7 @@ When you need the dev server yourself, start it detached with `npx astro dev --b
 - `src/components/`, `src/layouts/` and `src/pages/` are the screens.
   `src/scripts/` holds small vanilla-TypeScript behaviours, `src/lib/icons.ts` is the only file that imports lucide, `src/styles/tokens.css` holds the design tokens, `scripts/guard.mjs` implements `npm run guard` and `scripts/check-responsive.mjs` (with `scripts/browser.mjs`, a dependency-free headless Chrome driver) implements `npm run responsive`.
 - `src/assets/images/` holds photos and figures referenced from content as `/images/<folder>/<file>`; Astro optimises them at build time.
-  Until a file exists, the page shows a striped placeholder naming the expected path.
+  Until a file exists, the page shows a plain striped placeholder with no text.
 - The web admin is `src/pages/admin/index.astro` (Sveltia CMS bundled from npm) with its field definitions in `public/admin/config.yml`; test it with `astro preview`, never `astro dev`, and mirror schema changes with the skill `updating-admin-config`.
 - Planned, not set up yet: automatic deployment (`.github/workflows/deploy.yml`).
 - The design drafts the pages were ported from are in git history at the tag `draft-reference`.
