@@ -3,7 +3,12 @@ name: Yuil Kim
 nameKo: 김유일
 role: ms
 joined: 2026-08
-email: yuil@kaist.ac.kr
-topics: [StochCtrl, UQ, RL]
+topics:
+  - StochCtrl
+  - UQ
+  - RL
+representative: false
+email: yuili1@kaist.ac.kr
+photo: /images/team/2_yuil.webp
 links:
-  linkedin: https://example.com/
+  linkedin: https://www.linkedin.com/in/yuil-kim-b6b872287/
