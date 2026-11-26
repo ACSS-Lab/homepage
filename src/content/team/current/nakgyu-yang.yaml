@@ -3,6 +3,10 @@ name: Nakgyu Yang
 nameKo: 양낙규
 role: ms
 joined: 2025-02
-email: nakgyu@kaist.ac.kr
+topics:
+  - StochCtrl
+  - GenModels
+  - SLT
 representative: true
-topics: [StochCtrl, GenModels, SLT]
+email: ynk6592@kaist.ac.kr
+photo: /images/team/2_nakgyu.webp
