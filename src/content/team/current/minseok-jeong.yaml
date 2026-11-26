@@ -3,7 +3,13 @@ name: Minseok Jeong
 nameKo: 정민석
 role: phd
 joined: 2025-03
-email: minseok@kaist.ac.kr
-topics: [UDM, Dynamics, SLT]
+topics:
+  - UDM
+  - Dynamics
+  - SLT
+representative: false
+email: dsa950115@kaist.ac.kr
+photo: /images/team/2_minseok.webp
 links:
-  homepage: https://example.com/
+  homepage: https://dsa950115.github.io/
+  linkedin: https://www.linkedin.com/in/minseok-jeong-635405207
