@@ -1,21 +1,19 @@
 ---
-// Map with provider pills (Google / Naver / Kakao). Google loads with the page;
-// Kakao is built on first use by scripts/map.ts; Naver is a placeholder for now.
+// Map with provider pills (Google / Kakao). Google loads with the page;
+// Kakao is built on first use by scripts/map.ts.
 interface Props {
   google: { embedUrl: string };
   kakao: { timestamp: string; key: string };
   /** Frame title containing {provider}. */
   frameTitle: string;
-  naverNote: string;
   class?: string;
   style?: string;
 }
 
-const { google, kakao, frameTitle, naverNote, class: className, ...rest } = Astro.props;
+const { google, kakao, frameTitle, class: className, ...rest } = Astro.props;
 const title = (provider: string) => frameTitle.replace('{provider}', provider);
 const providers = [
   { id: 'google', label: 'Google' },
-  { id: 'naver', label: 'Naver' },
   { id: 'kakao', label: 'Kakao' },
 ];
 ---
@@ -23,9 +21,6 @@ const providers = [
 <div class:list={['card', 'rise', className]} data-map {...rest}>
   <div class="layer" data-map-layer="google">
     <iframe src={google.embedUrl} title={title('Google')} loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-  </div>
-  <div class="layer naver" data-map-layer="naver" hidden>
-    <span class="note">{naverNote}</span>
   </div>
   <div class="layer" data-map-layer="kakao" data-kakao-timestamp={kakao.timestamp} data-kakao-key={kakao.key} data-kakao-title={title('Kakao')} hidden></div>
 
@@ -67,19 +62,6 @@ const providers = [
     width: 100%;
     height: 100%;
     border: 0;
-  }
-
-  .naver {
-    display: flex;
-    align-items: flex-end;
-    padding: 14px;
-    background: var(--ph);
-  }
-
-  .note {
-    font: 500 var(--fs-caption) / 1.5 var(--font-mono);
-    color: var(--gray-500);
-    overflow-wrap: anywhere;
   }
 
   .tabs {

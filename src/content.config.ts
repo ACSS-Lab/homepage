@@ -537,7 +537,7 @@ const pages = defineCollection({
         title: z.string(),
         admin: z.object({ name: z.string(), badge: z.string(), bullets: z.array(z.string()) }),
         office: z.object({ title: z.string(), toggleLabel: z.string(), copyLabel: z.string(), copiedMessage: z.string() }),
-        map: z.object({ frameTitle: z.string().includes('{provider}'), naverNote: z.string() }),
+        map: z.object({ frameTitle: z.string().includes('{provider}') }),
       }),
       collaboration: z.object({
         enabled: z.boolean(),

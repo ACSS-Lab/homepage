@@ -28,7 +28,7 @@ const mailto = (subject: string) => `mailto:${site.adminEmail}?subject=${encodeU
     <SectionRow title={visit.title} divided>
       <div class="visit">
         <AdminCard name={visit.admin.name} badge={visit.admin.badge} bullets={visit.admin.bullets} email={site.adminEmail} />
-        <MapCard class="map" style="--i: 1" google={site.map.google} kakao={site.map.kakao} frameTitle={visit.map.frameTitle} naverNote={visit.map.naverNote} />
+        <MapCard class="map" style="--i: 1" google={site.map.google} kakao={site.map.kakao} frameTitle={visit.map.frameTitle} />
         <AddressCard title={visit.office.title} address={site.address} labels={visit.office} />
       </div>
     </SectionRow>

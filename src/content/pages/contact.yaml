@@ -39,8 +39,6 @@ visit:
   map:
     # {provider} is replaced with Google / Kakao.
     frameTitle: KAIST E3-2 — {provider} Map
-    naverNote: Naver Map — API 연동 예정
-
 # Hidden for now. Set `enabled: true` to show this section at the bottom of the page.
 collaboration:
   enabled: false

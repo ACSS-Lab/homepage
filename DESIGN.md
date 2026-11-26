@@ -102,7 +102,7 @@
 - **Font**: avoid system fonts; use **Pretendard** (Korean + Latin, free). Self-hosted from the pinned `pretendard` npm package — no font CDN.
   ```css
   --font-sans: "Pretendard Variable", "Pretendard", "Spoqa Han Sans Neo", "Noto Sans KR", sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;  /* venue lines, the map note */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;  /* venue lines */
   ```
 - **Baseline feel**: Toss uses a dense 13px baseline, but we have lots of *reading* content, so **body is 16px** for legibility. Only dense areas (lists/meta) drop to 13-14px.
 - **12px is for low-priority info only** (captions, footnotes, disclaimers).

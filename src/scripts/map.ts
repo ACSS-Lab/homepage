@@ -1,8 +1,8 @@
 // Map card: provider pills switch between stacked map layers.
 //
 //   [data-map]
-//     [data-map-tab="google|naver|kakao"]     pill; aria-pressed marks the active one
-//     [data-map-layer="google|naver|kakao"]   layer; all but the active one are `hidden`
+//     [data-map-tab="google|kakao"]     pill; aria-pressed marks the active one
+//     [data-map-layer="google|kakao"]   layer; all but the active one are `hidden`
 //
 // The Kakao layer is built the first time it is shown, and rebuilt when its
 // card changes size by more than a few pixels, because the embed is drawn at a
