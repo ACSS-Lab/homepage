@@ -8,7 +8,7 @@
 #
 # subfolder          group             extra fields
 # current/           group: member     role, joined, topics, representative
-# undergrad_interns/ group: intern     year, term, topics
+# undergrad_interns/ group: intern     kind, year, term, topics, alumni
 # alumni/            group: alumni     degree, joined, graduated, note, now
 # pi_and_staff/      group: pi         title
 # pi_and_staff/      group: visiting   title, home, period
@@ -17,6 +17,9 @@
 # Graduation: move the file from current/ to alumni/, change `group: member` to
 # `group: alumni`, replace `role` with `degree`, and add `graduated` (and `now`
 # once known).
+#
+# Interns of both kinds (research, undergraduate) are filed in undergrad_interns/.
+# When an internship ends the file stays there: set `alumni: true` in it.
 
 group: member
 name: Gildong Hong
@@ -38,10 +41,12 @@ links:
 order: 1 # rarely needed: lower numbers are listed first within the same group
 
 # --- group: intern (instead of the member fields) ---
+# kind: undergraduate     # research | undergraduate; the sub-list on the Interns tab
 # year: 2026
 # term: spring            # spring | summer | fall | winter
 # topics:
 #   - One line on what they worked on
+# alumni: false           # optional; true once the internship is over: moves them to the collapsed Alumni list
 
 # --- group: alumni (instead of the member fields) ---
 # degree: MS              # PhD | MS

@@ -309,7 +309,7 @@ collections:
       - { name: order, label: Order, widget: number, value_type: int, required: false, hint: 'Rarely needed; lower numbers are listed first within the same group.' }
 
   - name: interns
-    label: Undergraduate interns
+    label: Interns
     label_singular: Intern
     icon: school
     folder: src/content/team/undergrad_interns
@@ -321,15 +321,22 @@ collections:
       editable: [create]
       hint: firstname-lastname in lowercase, e.g. gildong-hong.
       pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Use lowercase letters, digits and hyphens, e.g. gildong-hong']
-    summary: '{{name}} ({{year}} {{term}})'
+    summary: '{{name}} ({{kind}}, {{year}} {{term}})'
     thumbnail: photo
     sortable_fields:
-      fields: [year, name]
+      fields: [year, name, kind]
       default: { field: year, direction: descending }
     fields:
       - { name: group, widget: hidden, default: intern }
       - { name: name, label: Name, widget: string }
       - { name: nameKo, label: Korean name, widget: string, required: false }
+      - name: kind
+        label: Kind
+        widget: select
+        options:
+          - { label: Research intern, value: research }
+          - { label: Undergraduate intern, value: undergraduate }
+        hint: The sub-list on the Interns tab.
       - { name: year, label: Year, widget: number, value_type: int, min: 2000, max: 2100 }
       - { name: term, label: Term, widget: select, options: [spring, summer, fall, winter] }
       - name: topics
@@ -338,6 +345,7 @@ collections:
         min: 1
         field: { name: topic, label: Topic, widget: string }
         hint: One line per topic on what they worked on (free text).
+      - { name: alumni, label: Alumni, widget: boolean, default: false, required: false, hint: 'Switch on once the internship is over; it moves them to the collapsed Alumni list.' }
       - { name: email, label: E-mail, widget: string, type: email, required: false }
       - name: photo
         label: Photo

@@ -129,14 +129,17 @@ export interface Team {
   staff: Staff[];
   /** Postdocs, then Ph.D., then M.S.; longest-serving first within each role. */
   members: Member[];
-  /** Most recent term first. */
+  /** Interns in the lab now; most recent term first. */
   interns: Intern[];
+  /** Interns whose internship is over (`alumni: true`); most recent term first. */
+  pastInterns: Intern[];
   /** Most recent graduates first. */
   alumni: Alumnus[];
 }
 
 export const ROLE_ORDER = ['postdoc', 'phd', 'ms'] as const;
 export const DEGREE_ORDER = ['PhD', 'MS'] as const;
+export const INTERN_KIND_ORDER = ['research', 'undergraduate'] as const;
 const TERM_ORDER = ['spring', 'summer', 'fall', 'winter'] as const;
 
 /** Subfolder of src/content/team/ each `group` must be filed under. */
@@ -199,12 +202,15 @@ export async function getTeam(): Promise<Team> {
   const pis = inGroup('pi');
   if (pis.length !== 1) fail(`src/content/team/${TEAM_FOLDER.pi}/`, `expected exactly one file with "group: pi", found ${pis.length}.`);
 
+  const interns = sortPeople(inGroup('intern'), (i) => -i.year, (i) => -TERM_ORDER.indexOf(i.term));
+
   return {
     pi: pis[0],
     visiting: sortPeople(inGroup('visiting')),
     staff: sortPeople(inGroup('staff')),
     members: sortPeople(inGroup('member'), (m) => ROLE_ORDER.indexOf(m.role), (m) => m.joined),
-    interns: sortPeople(inGroup('intern'), (i) => -i.year, (i) => -TERM_ORDER.indexOf(i.term)),
+    interns: interns.filter((i) => !i.alumni),
+    pastInterns: interns.filter((i) => i.alumni),
     alumni: sortPeople(inGroup('alumni'), (a) => newestFirst(a.graduated)),
   };
 }

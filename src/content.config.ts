@@ -199,9 +199,11 @@ const team = defineCollection({
     }),
     person.extend({
       group: z.literal('intern'),
+      kind: z.enum(['research', 'undergraduate']),
       year: z.number().int(),
       term: z.enum(['spring', 'summer', 'fall', 'winter']),
       topics: z.array(z.string()).min(1), // free text
+      alumni: z.boolean().default(false), // true once the internship is over
     }),
     person.extend({
       group: z.literal('alumni'),
@@ -454,7 +456,12 @@ const pages = defineCollection({
         incoming: z.string().includes('{date}'),
         terms: z.object({ spring: z.string(), summer: z.string(), fall: z.string(), winter: z.string() }),
       }),
-      interns: z.object({ title: z.string(), note: z.string() }),
+      interns: z.object({
+        title: z.string(),
+        empty: z.string(),
+        kinds: z.object({ research: z.string(), undergraduate: z.string() }),
+        alumni: z.object({ title: z.string() }),
+      }),
       alumni: z.object({ title: z.string(), note: z.string() }),
       join: z.object({ title: z.string(), body: z.string(), cta: z.string(), href }),
     }),

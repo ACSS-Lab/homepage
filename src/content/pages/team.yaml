@@ -50,8 +50,15 @@ labels:
     winter: Winter
 
 interns:
-  title: Undergraduate Interns
-  note: Interns join for a semester or a break. Photos and full details are omitted here.
+  title: Interns
+  empty: No interns at the moment. # shown when nobody is a current intern
+  # Sub-headings on the "Interns" tab, in display order.
+  kinds:
+    research: Research Interns
+    undergraduate: Undergraduate Interns
+  # Collapsed list under the current interns: everyone whose file says `alumni: true`.
+  alumni:
+    title: Alumni
 
 alumni:
   title: Alumni

@@ -15,7 +15,7 @@ Field meanings are in `src/content/team/_template.yaml`.
 | subfolder | group | required beyond name |
 |---|---|---|
 | `current/` | `member` | `role` (postdoc, phd, ms), `joined` (YYYY-MM), `topics` (area codes; `[]` if none) |
-| `undergrad_interns/` | `intern` | `year`, `term` (spring, summer, fall, winter), `topics` (free-text lines) |
+| `undergrad_interns/` | `intern` | `kind` (research, undergraduate), `year`, `term` (spring, summer, fall, winter), `topics` (free-text lines); optional `alumni` |
 | `alumni/` | `alumni` | `degree` (PhD, MS), `joined`, `graduated`; optional `note`, `now` |
 | `pi_and_staff/` | `pi`, `visiting`, `staff` | `title`; visiting also `home`, optional `period` |
 
@@ -27,6 +27,7 @@ Field meanings are in `src/content/team/_template.yaml`.
    Leave out `email`, `photo` and `links` that were not given; a missing one is simply not shown.
 3. Korean name goes in `nameKo`.
 4. `topics` for a member: codes from `src/content/taxonomy/areas.yaml` only.
+   `kind` for an intern: ask whether they are a research or an undergraduate intern when it was not given; do not guess.
 5. Photo: a 3:4 image at `src/assets/images/team/<id>.jpg` (lowercase name), then `photo: /images/team/<id>.jpg`.
    Do not set `photo` before the file exists; the build checks it.
 
@@ -36,6 +37,12 @@ Field meanings are in `src/content/team/_template.yaml`.
    The id and the photo path stay the same.
 2. Set `group: alumni`, replace `role` with `degree` (phd becomes PhD, ms becomes MS), add `graduated: YYYY-MM`, add `now` if known, and drop `representative`.
 3. Ask for `graduated` and `now` when they were not given; do not guess.
+
+## End an internship
+
+1. Add `alumni: true` to the intern's file.
+   The file stays in `undergrad_interns/`, which holds research and undergraduate interns alike.
+2. The person moves from the Interns list to the collapsed Alumni list under it; `kind` still decides the sub-list.
 
 ## Edit a profile
 

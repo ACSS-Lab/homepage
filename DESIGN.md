@@ -146,7 +146,7 @@
   Band: the Highlights feed (dense rows) on the left, a 16:9 gallery carousel (512px) on the right.
   Below `xl` the screen unstacks: hero (headline, lede, CTA), the notice card full width, then Highlights and the gallery one under the other; below `md` the feed drops its meta column.
 - **Publications**: filter chips + publication **list rows** (title, authors, venue, year). Don't turn these into cards.
-- **Team**: filter sidebar + two-column **person cards** grouped by role; interns as ruled summary rows; alumni as cards grouped by degree.
+- **Team**: filter sidebar + two-column **person cards** grouped by role; interns as ruled summary rows grouped by kind, past interns collapsed under them; alumni as cards grouped by degree.
 - **About**: Our Vision is a tall hero plus editorial rows (label / prose / figure); Research Areas is three image cards that switch a detail panel below.
 
 ### Responsive behaviour
@@ -157,7 +157,7 @@ What changes at each breakpoint:
 | Below | What changes |
 |---|---|
 | `xl` 1280 | Home unstacks: hero, full-width notice card, highlights, gallery. |
-| `lg` 1024 | Filter sidebar becomes the mobile filter bar; editorial rows go to two columns; gallery grid 3-up; the interns intro column stacks. |
+| `lg` 1024 | Filter sidebar becomes the mobile filter bar; editorial rows go to two columns; gallery grid 3-up; the interns title column stacks. |
 | `md` 768 | Mobile type scale, `--gutter` 16px and `--space-section` 48px; menu drawer; two-column card grids, text/figure rows, contact bands and area details stack; the track carousel shows one card; the area cards become a swipeable strip; gallery grid 2-up; banner placeholder notes hidden; the home feed drops its meta column. |
 | `sm` 640 | Row-internal grids stack: publication figure under the text, person photo track 96px, intern topic under the name, tab pill and underline-tab rail wrap. |
 
@@ -212,7 +212,10 @@ Card grids that share a column with a sidebar (Team, PI & Staffs) do not use a b
 - Three tabs selected by the URL fragment (`#current`, `#interns`, `#alumni`) from the banner's Members dropdown, whose entries carry counts and highlight the tab in view. The header menu links to the same fragments and highlights the one in view; the Team entry itself opens PI & Staffs.
 - **Current Members**: role sections (dot-and-rule heading with a gray count), `PersonCard`s two per row while the column fits two 400px cards (one otherwise), with join date top-right, an uppercase "Research interest" label and `AreaChip`s (family-colored code chips; full name on hover).
   A lab representative gets an uppercase `--navy-100` badge next to the name.
-- **Undergraduate Interns**: a 280px intro column (stacked below `lg`) and a ruled list (name + Korean name / topic / term) instead of cards; below `sm` the topic wraps under the name.
+- **Interns**: a 280px title column (stacked below `lg`) beside ruled lists (name + Korean name / topic / term) instead of cards, one per kind of intern (Research, Undergraduate) under a dot-and-rule heading with a gray count; below `sm` the topic wraps under the name.
+  A kind with nobody in it is left out, and a single line of text stands in when there is no current intern.
+  Under a `--gray-300` rule, past interns (`alumni: true`) repeat the same layout as a collapsed section: its title is a 44px-tall button with a gray count and a chevron that rotates when open (`scripts/accordion.ts`).
+  The section is left out while there are no past interns, and the tab's count in the Members dropdown is the current interns only.
 - **Alumni**: degree sections of `PersonCard`s showing years in the lab, degree title, an optional note and "Current affiliation".
 - A `--gray-100` join banner with a primary button closes the page except on the Alumni tab.
 

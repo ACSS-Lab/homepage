@@ -31,7 +31,7 @@ items:
       - label: Current Members
         href: /team/#current
         group: Members
-      - label: Undergraduate Interns
+      - label: Interns
         href: /team/#interns
         group: Members
       - label: Alumni

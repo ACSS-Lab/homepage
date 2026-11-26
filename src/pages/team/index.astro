@@ -9,14 +9,16 @@ import LoadMoreSentinel from '../../components/filters/LoadMoreSentinel.astro';
 import HeroTabs from '../../components/layout/HeroTabs.astro';
 import PageHero from '../../components/layout/PageHero.astro';
 import AlumniCard from '../../components/team/AlumniCard.astro';
+import InternList from '../../components/team/InternList.astro';
 import MemberCard from '../../components/team/MemberCard.astro';
 import AreaChip from '../../components/ui/AreaChip.astro';
 import Badge from '../../components/ui/Badge.astro';
 import Button from '../../components/ui/Button.astro';
 import EmptyState from '../../components/ui/EmptyState.astro';
+import Icon from '../../components/ui/Icon.astro';
 import SectionHeading from '../../components/ui/SectionHeading.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { DEGREE_ORDER, ROLE_ORDER, getAreaFamilies, getAreaIndex, getNavigation, getPage, getTeam } from '../../lib/content';
+import { DEGREE_ORDER, INTERN_KIND_ORDER, ROLE_ORDER, getAreaFamilies, getAreaIndex, getNavigation, getPage, getTeam } from '../../lib/content';
 import { sectionTabs } from '../../lib/navigation';
 
 const [page, team, nav, areas, families] = await Promise.all([getPage('team'), getTeam(), getNavigation(), getAreaIndex(), getAreaFamilies()]);
@@ -37,7 +39,9 @@ const usedAreas = [...areas.values()].filter((a) => areaCounts.has(a.code));
 let position = 0;
 
 const degreeGroups = DEGREE_ORDER.map((degree) => ({ degree, title: page.degrees[degree], people: team.alumni.filter((a) => a.degree === degree) })).filter((g) => g.people.length > 0);
-const internTerm = (intern: (typeof team.interns)[number]) => `${intern.year} ${labels.terms[intern.term]}`;
+// Interns: one sub-list per kind, for the current interns and for the past ones.
+const internGroups = (interns: typeof team.interns) =>
+  INTERN_KIND_ORDER.map((kind) => ({ title: page.interns.kinds[kind], people: interns.filter((i) => i.kind === kind) })).filter((g) => g.people.length > 0);
 ---
 
 <BaseLayout title={page.title}>
@@ -87,24 +91,26 @@ const internTerm = (intern: (typeof team.interns)[number]) => `${intern.year} ${
 
     <section class="container panel" data-tab-panel="interns" hidden>
       <div class="interns">
-        <div>
-          <h2 class="panel-title">{page.interns.title}</h2>
-          <p class="panel-note">{page.interns.note}</p>
-        </div>
-        <div class="intern-list">
-          {
-            team.interns.map((intern) => (
-              <div class="intern">
-                <span class="intern-name">
-                  {intern.name} {intern.nameKo && <span class="intern-ko">{intern.nameKo}</span>}
-                </span>
-                <span class="intern-topics">{intern.topics.join(' · ')}</span>
-                <span class="intern-term">{internTerm(intern)}</span>
-              </div>
-            ))
-          }
-        </div>
+        <h2 class="panel-title">{page.interns.title}</h2>
+        <InternList groups={internGroups(team.interns)} terms={labels.terms} empty={page.interns.empty} />
       </div>
+      {
+        team.pastInterns.length > 0 && (
+          <div class="interns past-interns">
+            <h2 class="panel-title">
+              {/* Toggled by scripts/accordion.ts, which FilterLayout starts for the whole page. */}
+              <button class="past-toggle" type="button" aria-expanded="false" aria-controls="past-interns" data-accordion>
+                {page.interns.alumni.title}
+                <span class="past-count">{team.pastInterns.length}</span>
+                <Icon name="chevron-down" size={18} class="past-caret" />
+              </button>
+            </h2>
+            <div id="past-interns" hidden>
+              <InternList groups={internGroups(team.pastInterns)} terms={labels.terms} empty={page.interns.empty} />
+            </div>
+          </div>
+        )
+      }
     </section>
 
     <section class="container panel" data-tab-panel="alumni" hidden>
@@ -175,12 +181,6 @@ const internTerm = (intern: (typeof team.interns)[number]) => `${intern.year} ${
     color: var(--ink);
   }
 
-  .panel-note {
-    margin: var(--space-3) 0 0;
-    font: 400 var(--fs-sm) / 1.7 var(--font-sans);
-    color: var(--gray-700);
-  }
-
   .interns {
     display: grid;
     grid-template-columns: 280px 1fr;
@@ -188,37 +188,48 @@ const internTerm = (intern: (typeof team.interns)[number]) => `${intern.year} ${
     align-items: start;
   }
 
-  .intern-list {
-    border-bottom: 1px solid var(--gray-300);
-  }
-
-  .intern {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr auto;
-    gap: var(--space-6);
-    align-items: baseline;
-    padding: var(--space-4) var(--space-1);
+  /* Past interns: the same two columns, with the title as the button that opens the list. */
+  .past-interns {
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
     border-top: 1px solid var(--gray-300);
   }
 
-  .intern-name {
-    font: 600 var(--fs-body) / 1.4 var(--font-sans);
-    color: var(--ink);
+  .past-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    /* The 44px touch target is taller than the title's line; pull it back so the title lines up with the list beside it. */
+    margin-block: calc((1.3em - 44px) / 2);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
   }
 
-  .intern-ko {
-    font-weight: 400;
+  .past-toggle:hover {
+    color: var(--navy-600);
+  }
+
+  .past-count {
+    font: 400 var(--fs-caption) / 1.4 var(--font-sans);
+    letter-spacing: 0;
     color: var(--gray-500);
   }
 
-  .intern-topics {
-    font: 400 var(--fs-sm) / 1.55 var(--font-sans);
-    color: var(--gray-700);
+  .past-caret {
+    flex: none;
+    color: var(--gray-500);
+    transition: transform var(--dur) var(--ease);
   }
 
-  .intern-term {
-    font: 400 var(--fs-caption) / 1.5 var(--font-sans);
-    color: var(--gray-500);
+  .past-toggle[aria-expanded='true'] .past-caret {
+    transform: rotate(180deg);
   }
 
   .alumni-head {
@@ -283,26 +294,6 @@ const internTerm = (intern: (typeof team.interns)[number]) => `${intern.year} ${
   }
 
   @media (max-width: 639px) {
-    .intern {
-      grid-template-columns: minmax(0, 1fr) auto;
-      grid-template-areas:
-        'name term'
-        'topics topics';
-      gap: var(--space-1) var(--space-4);
-    }
-
-    .intern-name {
-      grid-area: name;
-    }
-
-    .intern-topics {
-      grid-area: topics;
-    }
-
-    .intern-term {
-      grid-area: term;
-    }
-
     .alumni-head {
       flex-wrap: wrap;
       align-items: baseline;

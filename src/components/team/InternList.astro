@@ -1,0 +1,115 @@
+---
+// Interns as ruled summary rows (name + Korean name / topics / term) instead of
+// cards: one titled sub-list per kind of intern. Used for the current interns
+// and, inside the collapsed Alumni section, for the past ones.
+import type { Intern } from '../../lib/content';
+import SectionHeading from '../ui/SectionHeading.astro';
+
+interface Props {
+  /** Sub-lists in display order; a kind with nobody in it is left out by the caller. */
+  groups: { title: string; people: Intern[] }[];
+  /** Display names of the terms, from the page's labels. */
+  terms: Record<Intern['term'], string>;
+  /** Line shown when there is no group at all. */
+  empty: string;
+}
+
+const { groups, terms, empty } = Astro.props;
+---
+
+<div class="lists">
+  {groups.length === 0 && <p class="none">{empty}</p>}
+  {
+    groups.map((group) => (
+      <div class="group">
+        <SectionHeading as="h3" title={group.title} count={group.people.length} />
+        <ul class="list">
+          {group.people.map((intern) => (
+            <li class="intern">
+              <span class="name">
+                {intern.name} {intern.nameKo && <span class="ko">{intern.nameKo}</span>}
+              </span>
+              <span class="topics">{intern.topics.join(' · ')}</span>
+              <span class="term">
+                {intern.year} {terms[intern.term]}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .lists {
+    display: grid;
+    gap: var(--space-10);
+    min-width: 0;
+  }
+
+  .none {
+    margin: 0;
+    padding-block: var(--space-1);
+    font: 400 var(--fs-sm) / 1.7 var(--font-sans);
+    color: var(--gray-700);
+  }
+
+  .list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* The heading's rule is the top edge of the first row. */
+  .intern {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr auto;
+    gap: var(--space-6);
+    align-items: baseline;
+    padding: var(--space-4) var(--space-1);
+    border-bottom: 1px solid var(--gray-300);
+  }
+
+  .name {
+    font: 600 var(--fs-body) / 1.4 var(--font-sans);
+    color: var(--ink);
+  }
+
+  .ko {
+    font-weight: 400;
+    color: var(--gray-500);
+  }
+
+  .topics {
+    font: 400 var(--fs-sm) / 1.55 var(--font-sans);
+    color: var(--gray-700);
+  }
+
+  .term {
+    font: 400 var(--fs-caption) / 1.5 var(--font-sans);
+    color: var(--gray-500);
+  }
+
+  @media (max-width: 639px) {
+    .intern {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        'name term'
+        'topics topics';
+      gap: var(--space-1) var(--space-4);
+    }
+
+    .name {
+      grid-area: name;
+    }
+
+    .topics {
+      grid-area: topics;
+    }
+
+    .term {
+      grid-area: term;
+    }
+  }
+</style>
