@@ -1,6 +1,9 @@
 group: member
-name: "Sunidhi Pandey, Ph.D."
+name: Sunidhi Pandey, Ph.D.
 role: postdoc
 joined: 2026-05
-email: sunidhi@kaist.ac.kr
-topics: []
+representative: false
+email: spandey@kaist.ac.kr
+photo: /images/team/sunidhi.webp
+links:
+  scholar: https://scholar.google.co.in/citations?user=mpsAxggAAAAJ&hl=en
