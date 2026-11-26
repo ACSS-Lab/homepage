@@ -3,5 +3,10 @@ name: Doyoung Heo
 nameKo: 허도영
 role: phd
 joined: 2026-08
-email: doyoung@kaist.ac.kr
-topics: [UDM, OnLearn, Dynamics]
+topics:
+  - UDM
+  - OnLearn
+  - Dynamics
+representative: false
+email: dyheo619@kaist.ac.kr
+photo: /images/team/2_doyoung.webp
