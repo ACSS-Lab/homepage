@@ -219,7 +219,6 @@ Card grids that share a column with a sidebar (Team, PI & Staffs) do not use a b
   Under a `--gray-300` rule, past interns (`alumni: true`) repeat the same layout as a collapsed section: its title is a 44px-tall button with a chevron that rotates when open (`scripts/accordion.ts`).
   The section is left out while there are no past interns, and the tab's count in the Members dropdown is the current interns only.
 - **Alumni**: degree sections of `PersonCard`s showing years in the lab, degree title, an optional note and "Current affiliation".
-- A `--gray-100` join banner with a primary button closes the page except on the Alumni tab.
 
 ### Contact page
 - The only page without a dark banner: a plain `--fs-h1` title with a rule. Below, titled bands (`132px` label rail + content) separated by `--gray-300` rules.

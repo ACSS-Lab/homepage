@@ -13,7 +13,6 @@ import InternList from '../../components/team/InternList.astro';
 import MemberCard from '../../components/team/MemberCard.astro';
 import AreaChip from '../../components/ui/AreaChip.astro';
 import Badge from '../../components/ui/Badge.astro';
-import Button from '../../components/ui/Button.astro';
 import EmptyState from '../../components/ui/EmptyState.astro';
 import Icon from '../../components/ui/Icon.astro';
 import SectionHeading from '../../components/ui/SectionHeading.astro';
@@ -130,16 +129,6 @@ const internGroups = (interns: typeof team.interns) =>
         ))
       }
     </section>
-
-    <section class="container join-section" data-hide-on-tab="alumni">
-      <div class="join">
-        <div>
-          <div class="join-title">{page.join.title}</div>
-          <p class="join-body">{page.join.body}</p>
-        </div>
-        <Button href={page.join.href} variant="primary" arrow>{page.join.cta}</Button>
-      </div>
-    </section>
   </div>
 </BaseLayout>
 
@@ -149,8 +138,9 @@ const internGroups = (interns: typeof team.interns) =>
 </script>
 
 <style>
+  /* Each tab is the last thing on the page, so it carries the page's bottom padding. */
   .panel {
-    padding-top: var(--space-14);
+    padding-block: var(--space-14) var(--space-section);
   }
 
   .groups {
@@ -237,35 +227,6 @@ const internGroups = (interns: typeof team.interns) =>
     color: var(--gray-500);
   }
 
-  /* The alumni tab has no join banner under it, so it carries the page's bottom padding itself. */
-  .panel[data-tab-panel='alumni'] {
-    padding-bottom: var(--space-section);
-  }
-
-  .join-section {
-    padding-block: var(--space-14) var(--space-section);
-  }
-
-  .join {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-8);
-    padding: 28px var(--space-8);
-    background: var(--gray-100);
-  }
-
-  .join-title {
-    font: 600 var(--fs-h3) / 1.4 var(--font-sans);
-    color: var(--ink);
-  }
-
-  .join-body {
-    max-width: 640px;
-    margin: var(--space-2) 0 0;
-    font: 400 var(--fs-body) / 1.6 var(--font-sans);
-    color: var(--gray-700);
-  }
   @media (max-width: 1023px) {
     .interns {
       grid-template-columns: minmax(0, 1fr);
@@ -276,13 +237,6 @@ const internGroups = (interns: typeof team.interns) =>
   @media (max-width: 767px) {
     .panel {
       padding-top: var(--space-10);
-    }
-
-    .join {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-5);
-      padding: var(--space-6) var(--space-5);
     }
   }
 

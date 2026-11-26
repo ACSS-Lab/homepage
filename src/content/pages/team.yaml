@@ -59,10 +59,3 @@ interns:
 alumni:
   title: Alumni
   note: Current affiliations are updated after confirmation with each alum.
-
-# Banner under the lists (not shown on the Alumni tab)
-join:
-  title: We're looking for people to research with
-  body: We recruit MS/PhD students and undergraduate interns. Reach out with your CV and the topics you'd like to work on.
-  cta: How to apply
-  href: /contact/

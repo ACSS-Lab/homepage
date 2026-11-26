@@ -460,7 +460,6 @@ const pages = defineCollection({
         alumni: z.object({ title: z.string() }),
       }),
       alumni: z.object({ title: z.string(), note: z.string() }),
-      join: z.object({ title: z.string(), body: z.string(), cta: z.string(), href }),
     }),
     z.object({
       page: z.literal('publications'),

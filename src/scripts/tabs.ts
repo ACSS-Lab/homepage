@@ -4,7 +4,6 @@
 //
 //   [data-tabs data-default="current"]   root
 //     [data-tab-panel="current"]         panels; all but the selected one are `hidden`
-//     [data-hide-on-tab="alumni"]        anything hidden while that tab is selected
 //   [data-tab-links] a[href$="#current"] links anywhere on the page (banner tabs, header menu)
 //                                        get aria-current="true" when they point at the shown tab
 //
@@ -20,7 +19,6 @@ export function initTabs(root: ParentNode = document): void {
       const wanted = location.hash.slice(1);
       const tab = names.includes(wanted) ? wanted : fallback;
       panels.forEach((panel) => (panel.hidden = panel.dataset.tabPanel !== tab));
-      tabs.querySelectorAll<HTMLElement>('[data-hide-on-tab]').forEach((el) => (el.hidden = el.dataset.hideOnTab === tab));
       document.querySelectorAll<HTMLAnchorElement>('[data-tab-links] a').forEach((link) => {
         const target = link.hash.slice(1);
         if (link.pathname === location.pathname && names.includes(target)) link.setAttribute('aria-current', target === tab ? 'true' : 'false');
