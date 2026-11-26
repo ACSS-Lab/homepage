@@ -18,7 +18,7 @@ Field meanings are in `src/content/publications/_template.yaml`; this skill cove
    The id is permanent.
 2. Copy `_template.yaml` to `<id>.yaml` and fill it in.
    Drop template comments that no longer help.
-   - `authors` in published order, `*` on equal first authors, `†` on the corresponding author, in the initial-plus-surname style of existing files (`S. Han†`).
+   - `authors` in published order, `*` on equal first authors, `†` on the corresponding author, with full names as printed on the paper (`SooJean Han†`), never initials.
      Ask when the marks are unknown; do not guess.
    - `type` is journal, conference, preprint or patent.
      A preprint's `venue` is the arXiv id; a patent's is the patent number.

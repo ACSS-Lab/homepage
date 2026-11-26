@@ -87,7 +87,7 @@ collections:
         widget: list
         min: 1
         field: { name: author, label: Author, widget: string }
-        hint: In published order, initial plus surname (S. Han); mark equal first authors with * and the corresponding author with †.
+        hint: Full names in published order (SooJean Han); mark equal first authors with * and the corresponding author with †.
       - { name: venue, label: Venue, widget: string, hint: 'Full name; for a patent the number, for a preprint the arXiv id.' }
       - { name: venueShort, label: Venue (short), widget: string, required: false, hint: 'Short name used on compact lists and on the venue link.' }
       - { name: type, label: Type, widget: select, options: [journal, conference, preprint, patent] }

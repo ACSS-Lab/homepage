@@ -6,10 +6,10 @@
 
 template: true # hides this file from the web admin; delete this line in a copy you make by hand
 title: Full Title of the Paper
-authors: # in published order. Mark equal first authors with * and the corresponding author with †
-  - G. Hong*
-  - S. Kim*
-  - S. Han†
+authors: # full names in published order. Mark equal first authors with * and the corresponding author with †
+  - Gildong Hong*
+  - Sooyoung Kim*
+  - SooJean Han†
 venue: IEEE Transactions on Robotics # full name; for a patent the number, for a preprint the arXiv id
 venueShort: IEEE T-RO # optional short name, used on compact lists and on the venue link
 type: journal # journal | conference | preprint | patent
