@@ -3,7 +3,14 @@ name: Yechan Lee
 nameKo: 이예찬
 role: ms
 joined: 2025-02
-email: yechan@kaist.ac.kr
-topics: [RL, OnLearn, Robot]
+topics:
+  - RL
+  - OnLearn
+  - Robot
+representative: false
+email: tuuktuc86@kaist.ac.kr
+photo: /images/team/leeyechan.webp
 links:
-  homepage: https://example.com/
+  homepage: https://tuuktuc86.github.io/
+  linkedin: https://www.linkedin.com/in/tuuktuc86/
+  scholar: https://scholar.google.com/citations?user=ly_l1HAAAAAJ&hl=ko&authuser=1
