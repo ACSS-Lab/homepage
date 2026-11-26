@@ -7,7 +7,7 @@
 
 backend:
   name: github
-  repo: ACSS-Lab/acss-homepage-new
+  repo: ACSS-Lab/homepage
   branch: dev
   auth_methods: [token]
   commit_messages:

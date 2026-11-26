@@ -54,7 +54,7 @@ Every page's headings and labels are in `pages/<page>.yaml`; the header menu in 
   It covers publications, projects, research areas, the team, notices, news, the gallery and the open or closed switch of the application tracks; everything else is edited in the files (section 3).
 - Signing in needs a GitHub **personal access token**; the PI and the lab admin each hold one.
   Make it on GitHub: profile picture, Settings, Developer settings, Personal access tokens, Fine-grained tokens, Generate new token.
-  Resource owner `ACSS-Lab`, only the repository `acss-homepage-new`, Repository permissions: Contents set to Read and write, expiration one year at most.
+  Resource owner `ACSS-Lab`, only the repository `homepage`, Repository permissions: Contents set to Read and write, expiration one year at most.
   Click **Sign in with Token** on the admin page and paste it once; the browser remembers it, so sign out on a shared computer.
   When someone leaves, remove them as a collaborator and revoke their token.
 - Every save is a commit on `dev` with a message like `content: update publications "tro26" via the admin`.
@@ -259,7 +259,7 @@ When you work with Claude, tell it which branch you are on; its own rules in `CL
 - **The build failed (a red X on GitHub)** → usually a missing required field, a mistyped option, or an id that points at a file that doesn't exist. The error names the file. Copy it to Claude:
   > Fix this build error: `paste error message`
 - **`npm run guard` failed** → a project rule was broken in code (a hand-drawn icon, a color outside `tokens.css`, ...). The message says which file and rule.
-- **Admin login fails**: the token has expired or lacks Contents read and write on `ACSS-Lab/acss-homepage-new`; make a new one (section 2-1) and sign in again, and confirm with the current admin that you're a GitHub collaborator.
+- **Admin login fails**: the token has expired or lacks Contents read and write on `ACSS-Lab/homepage`; make a new one (section 2-1) and sign in again, and confirm with the current admin that you're a GitHub collaborator.
   Red text on the login screen means `public/admin/config.yml` has an error; ask Claude.
 - **Posted something wrong** → tell Claude "revert my last change" to restore the previous state.
 
