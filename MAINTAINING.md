@@ -255,6 +255,8 @@ When you work with Claude, tell it which branch you are on; its own rules in `CL
 ## 5. When something breaks
 
 - **The site isn't updating**: check that your change was merged into `main` and pushed (section 4), and that the deploy finished.
+  Every push to `main` starts a "Deploy to GitHub Pages" run in the repository's **Actions** tab; it takes a few minutes, and a green check means the live site is updated.
+  A red X means the build, the type check or the project rules failed, and the live site stays as it was until a fixed push goes through.
   Clear your browser cache.
 - **The build failed (a red X on GitHub)** → usually a missing required field, a mistyped option, or an id that points at a file that doesn't exist. The error names the file. Copy it to Claude:
   > Fix this build error: `paste error message`

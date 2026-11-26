@@ -53,6 +53,7 @@ When the design or the content model changes, update `DESIGN.md`, `MAINTAINING.m
 ### Branches
 
 `main` is the deployed site; nobody commits on it directly.
+Every push to `main` runs [.github/workflows/deploy.yml](.github/workflows/deploy.yml), which builds the site and publishes `dist/` to GitHub Pages at `acss.kaist.ac.kr`.
 Content updates go on `dev` and are merged into `main` after a passing build, with no pull request needed.
 Development work (features, design, code) goes on a branch off `dev` and reaches `dev` through a pull request that passes `build`, `check` and `guard`; `dev` is then merged into `main`.
 [MAINTAINING.md](MAINTAINING.md) section 4 has the exact commands.

@@ -81,7 +81,8 @@ If `astro dev` shows stale or missing content after a schema change or a branch 
 - `src/assets/images/` holds photos and figures referenced from content as `/images/<folder>/<file>`; Astro optimises them at build time.
   Until a file exists, the page shows a plain striped placeholder with no text.
 - The web admin is `src/pages/admin/index.astro` (Sveltia CMS bundled from npm) with its field definitions in `public/admin/config.yml`; test it with `astro preview`, never `astro dev`, and mirror schema changes with the skill `updating-admin-config`.
-- Planned, not set up yet: automatic deployment (`.github/workflows/deploy.yml`).
+- Deployment is `.github/workflows/deploy.yml`: every push to `main` runs build, check and guard, then publishes `dist/` to GitHub Pages at `acss.kaist.ac.kr`.
+  The custom domain is stored in the repository's Pages settings (source "GitHub Actions"); `public/CNAME` only mirrors it and a `CNAME` at the repo root is not used.
 - The design drafts the pages were ported from are in git history at the tag `draft-reference`.
 
 ## Definition of done
