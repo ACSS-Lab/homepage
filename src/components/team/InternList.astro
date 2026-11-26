@@ -71,13 +71,17 @@ const { groups, terms, empty } = Astro.props;
     border-bottom: 1px solid var(--gray-300);
   }
 
+  /* Name, Korean name and term are set like the name, subtitle and aside of a PersonCard. */
   .name {
-    font: 600 var(--fs-body) / 1.4 var(--font-sans);
+    font: 600 var(--fs-body) / 1.35 var(--font-sans);
+    letter-spacing: -0.01em;
     color: var(--ink);
   }
 
   .ko {
-    font-weight: 400;
+    margin-left: var(--space-1);
+    font: 400 var(--fs-sm) / 1.5 var(--font-sans);
+    letter-spacing: 0;
     color: var(--gray-500);
   }
 
@@ -87,7 +91,7 @@ const { groups, terms, empty } = Astro.props;
   }
 
   .term {
-    font: 400 var(--fs-caption) / 1.5 var(--font-sans);
+    font: 400 var(--fs-caption) / 1.4 var(--font-sans);
     color: var(--gray-500);
   }
 

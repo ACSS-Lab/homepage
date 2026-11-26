@@ -49,7 +49,8 @@ Pages, site settings, taxonomy and prose are not in the admin.
 ## Verify
 
 1. `nvm use && npm run build && nvm use && npm run guard`.
-2. `nvm use && npm run preview`, then in Chrome open `http://localhost:4321/admin/`: the login screen must show no red config error, and the browser console no "is not defined in the Sveltia CMS configuration schema" warning.
+   The file can also be checked without a browser: parse it with `yaml` and validate it with `ajv` (`strict: false`) against `node_modules/@sveltia/cms/schema/sveltia-cms.json`.
+2. `nvm use && npm run preview`, then in Chrome open `http://localhost:4321/admin/` (another port if `astro dev` holds 4321; the admin does not load from the dev server): the login screen must show no red config error, and the browser console no "is not defined in the Sveltia CMS configuration schema" warning.
    A headless check of that screen: `node scripts/browser.mjs <probe>` with a probe that reads `document.body.innerText`.
 3. Ask the user to click **Work with Local Repository**, open the changed collection, and confirm the field shows and a saved entry builds.
 4. Run `nvm use && npm run guard` again after the user's test and revert any test entries (`git checkout -- src/content && git clean -fd src/content src/assets/images`).
