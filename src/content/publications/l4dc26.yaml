@@ -1,18 +1,11 @@
-title: Online Learning for Distributed Multi-Agent Coordination with Delayed Feedback
+title: "Scalable Infinitesimal Generator-Based Koopman Learning for Long-Horizon Prediction"
 authors:
-  - J. Noh*
-  - H. Choe*
-  - S. Han†
-venue: L4DC 2026
+  - Minseok Jeong
+  - SooJean Han
+  - Hyo-Sang Shin
+venue: "Learning for Dynamics and Control Conference"
 venueShort: L4DC
 type: conference
 year: 2026
-month: 4
-areas: [OnLearn, DMC]
-summary: >-
-  Regret bounds for coordination policies that must act before the other agents' observations arrive, with a delay-aware step-size schedule.
-links:
-  - { type: venue, url: "#top" }
-  - { type: paper, url: "#top" }
-figure:
-  ratio: 3/2
+month: 1
+areas: []

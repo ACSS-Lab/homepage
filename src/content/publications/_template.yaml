@@ -16,9 +16,10 @@ type: journal # journal | conference | preprint | patent
 year: 2026
 month: 6 # 1-12; orders papers within a year
 selected: false # true features the paper in the "Selected publications" carousel
-areas: [StochCtrl, RL] # area codes from src/content/taxonomy/areas.yaml (at least one)
+areas: [StochCtrl, RL] # area codes from src/content/taxonomy/areas.yaml; [] until the paper is tagged
 
-# One or two sentences shown when the row is expanded.
+# Optional. One or two sentences shown when the row is expanded; a row with neither a
+# summary nor links does not expand.
 summary: >-
   What the paper does and why it matters, in plain words.
 

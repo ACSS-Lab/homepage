@@ -16,7 +16,7 @@ filter:
   all: All
   ongoing: Ongoing
   done: Done
-  empty: No projects in this status yet.
+  empty: No projects to show yet.
 
 labels:
   agency: Agency

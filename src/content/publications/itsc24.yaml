@@ -1,0 +1,13 @@
+title: "Efficient Replay Memory Architectures in Multi-Agent Reinforcement Learning for Traffic Congestion Control"
+authors:
+  - Mukul Chodhary
+  - Kevin Octavian
+  - SooJean Han
+venue: "IEEE Intelligent Transportation Systems Conference"
+venueShort: ITSC
+type: conference
+year: 2024
+month: 7
+areas: []
+links:
+  - { type: paper, url: "https://ieeexplore.ieee.org/document/10920085" }

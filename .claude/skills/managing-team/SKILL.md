@@ -15,7 +15,7 @@ Field meanings are in `src/content/team/_template.yaml`.
 | subfolder | group | required beyond name |
 |---|---|---|
 | `current/` | `member` | `role` (postdoc, phd, ms), `joined` (YYYY-MM), `topics` (area codes; `[]` if none) |
-| `interns/` | `intern` | `kind` (research, undergraduate), `year`, `term` (spring, summer, fall, winter), `topics` (free-text lines); optional `alumni` |
+| `interns/` | `intern` | `kind` (research, undergraduate); optional `year`, `term` (spring, summer, fall, winter), `topics` (free-text lines), `alumni` |
 | `alumni/` | `alumni` | `degree` (PhD, MS), `joined`, `graduated`; optional `note`, `now` |
 | `pi_and_staff/` | `pi`, `visiting`, `staff` | `title`; visiting also `home`, optional `period` |
 

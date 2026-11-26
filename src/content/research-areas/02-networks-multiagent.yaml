@@ -19,7 +19,7 @@ subs:
       - Fault-tolerant control
       - Consensus
       - System level synthesis
-    papers: [l4dc26, cdc24] # publication ids (file names in src/content/publications/)
+    papers: [] # publication ids (file names in src/content/publications/)
 
   - title: "Situational Awareness with Wireless Sensor Networks"
     problem:
@@ -38,4 +38,4 @@ subs:
       - Distributed 3D reconstruction
       - Sensor networks
       - Robotic sensor networks
-    papers: [lcss24] # publication ids (file names in src/content/publications/)
+    papers: [] # publication ids (file names in src/content/publications/)

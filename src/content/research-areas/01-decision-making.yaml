@@ -18,7 +18,7 @@ subs:
       - Diffusion/Flow-matching
       - Safe/Robust autonomy
       - Trajectory and motion planning
-    papers: [icra26, tro26] # publication ids (file names in src/content/publications/)
+    papers: [] # publication ids (file names in src/content/publications/)
 
   - title: "Robust & Adaptive Control with Uncertainty Quantification"
     problem:
@@ -36,4 +36,4 @@ subs:
       - OOD detection for control
       - Autonomous trajectory and motion planning
       - Online reinforcement learning
-    papers: [l4dc25, auto25] # publication ids (file names in src/content/publications/)
+    papers: [] # publication ids (file names in src/content/publications/)

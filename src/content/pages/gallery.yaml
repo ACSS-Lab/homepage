@@ -15,7 +15,7 @@ showTags: true # show tag chips on the cards
 filter:
   label: Tag
   all: All
-  empty: No posts match this tag.
+  empty: No posts yet.
 
 labels:
   # {n} is replaced with the number of photos.

@@ -180,9 +180,9 @@ Card grids that share a column with a sidebar (Team, PI & Staffs) do not use a b
 - Wrap standalone info that needs no grouping in a card — scatter it in a grid instead.
 
 ### Home: Notice card, Highlights feed, Gallery preview
-- **Notice card**: 520px white `--radius-lg` card with `--shadow-lg` floating over the hero; ruled rows of date (72px, caption gray) / title / optional accent badge.
-- **Highlights feed**: rows that stretch to share the column height: uppercase navy kind label (56px), title, ellipsized meta (176px), month (52px); `--bg` hover. Heading has a "Go to Research" arrow link.
-- **Gallery preview**: 16:9 slides with a `--glass` caption chip (title, then tag · month) and a glass control pill bottom-right: 22px chevron buttons, compact dots (4px, current one a 28px bar that fills navy over the interval), and a play/pause toggle. Autoplays every 3s; paused shows a static 40% bar; reduced motion starts paused.
+- **Notice card**: 520px white `--radius-lg` card with `--shadow-lg` floating over the hero; ruled rows of date (72px, caption gray) / title / optional accent badge. With no notice the card is not rendered.
+- **Highlights feed**: rows that stretch to share the column height: uppercase navy kind label (56px), title, ellipsized meta (176px), month (52px); `--bg` hover. Heading has a "Go to Research" arrow link. With no news item, one ruled line of `--fs-sm` gray text stands in for the rows.
+- **Gallery preview**: 16:9 slides with a `--glass` caption chip (title, then tag · month) and a glass control pill bottom-right: 22px chevron buttons, compact dots (4px, current one a 28px bar that fills navy over the interval), and a play/pause toggle. Autoplays every 3s; paused shows a static 40% bar; reduced motion starts paused. With no gallery post, one ruled line of `--fs-sm` gray text stands in for the carousel.
 
 ### Graphic highlights (icons / figures)
 - Icons/illustrations/research figures **only where they carry real symbolic meaning.** No decoration.
@@ -214,7 +214,7 @@ Card grids that share a column with a sidebar (Team, PI & Staffs) do not use a b
 - Three tabs selected by the URL fragment (`#current`, `#interns`, `#alumni`) from the banner's Members dropdown, whose entries carry counts and highlight the tab in view. The header menu links to the same fragments and highlights the one in view; the Team entry itself opens PI & Staffs.
 - **Current Members**: role sections (dot-and-rule heading), `PersonCard`s two per row while the column fits two 400px cards (one otherwise), with join date top-right, an uppercase "Research interest" label and `AreaChip`s (family-colored code chips; full name on hover).
   A lab representative gets an uppercase `--navy-100` badge next to the name.
-- **Interns**: a 280px title column (stacked below `lg`) beside ruled lists (name + Korean name / topic / term, set like a `PersonCard`'s name, subtitle and aside) instead of cards, one per kind of intern (Research, Undergraduate) under a dot-and-rule heading; below `sm` the topic wraps under the name.
+- **Interns**: a 280px title column (stacked below `lg`) beside ruled lists (name + Korean name / topic / term, set like a `PersonCard`'s name, subtitle and aside) instead of cards, one per kind of intern (Research, Undergraduate) under a dot-and-rule heading; topic and term are optional and a row may be a name alone; below `sm` the topic wraps under the name.
   A kind with nobody in it is left out, and a single line of text stands in when there is no current intern.
   Under a `--gray-300` rule, past interns (`alumni: true`) repeat the same layout as a collapsed section: its title is a 44px-tall button with a chevron that rotates when open (`scripts/accordion.ts`).
   The section is left out while there are no past interns, and the tab's count in the Members dropdown is the current interns only.
@@ -265,7 +265,7 @@ Card grids that share a column with a sidebar (Team, PI & Staffs) do not use a b
 
 ### Publication list
 - Year-grouped rows under an "All publications" heading with the author-marker footnote right-aligned. Each year is a sticky `--fs-h1` label with a paper count in a 104px gutter; rows sit on `--gray-300` rules and tint `--gray-100` on hover.
-- A row: meta line (type `Badge`, venue, month/year, "Selected" accent badge, a 28px round chevron that turns navy and flips when open), `--fs-body` 600 title, authors, `AreaChip`s in taxonomy order; a 176px 4:3 figure on the right (below `sm` it moves under the text, centred at up to 260px). Clicking the text expands the summary and the link chips (36px `--gray-100` pills with a lucide icon per link type, `--navy-600` on hover).
+- A row: meta line (type `Badge`, venue, month/year, "Selected" accent badge, a 28px round chevron that turns navy and flips when open), `--fs-body` 600 title, authors, `AreaChip`s in taxonomy order; a 176px 4:3 figure on the right (below `sm` it moves under the text, centred at up to 260px). Clicking the text expands the summary and the link chips; a row with neither is plain text, with no chevron and nothing to expand. The chips are 36px `--gray-100` pills with a lucide icon per link type, `--navy-600` on hover.
 
 ### Status tabs + pagination (Projects / Gallery)
 - `UnderlineTabs`: an uppercase label in a 76px rail, then text tabs with a gray count; the active tab is `--ink` 600 on a 2px `--navy-600` underline, idle tabs `--gray-500`.

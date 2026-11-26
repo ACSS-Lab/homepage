@@ -1,0 +1,14 @@
+title: "Predictive Control of Linear Discrete-Time Markovian Jump Systems by Learning Recurrent Patterns"
+authors:
+  - SooJean Han
+  - Soon-Jo Chung
+  - John C. Doyle
+venue: "Automatica"
+venueShort: Automatica
+type: journal
+year: 2023
+month: 5
+areas: []
+links:
+  - { type: venue, url: "https://www.sciencedirect.com/science/article/pii/S0005109823003588?dgcid=author" }
+  - { type: paper, url: "https://arxiv.org/pdf/2305.05587.pdf" }

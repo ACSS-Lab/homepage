@@ -202,7 +202,8 @@ export async function getTeam(): Promise<Team> {
   const pis = inGroup('pi');
   if (pis.length !== 1) fail(`src/content/team/${TEAM_FOLDER.pi}/`, `expected exactly one file with "group: pi", found ${pis.length}.`);
 
-  const interns = sortPeople(inGroup('intern'), (i) => -i.year, (i) => -TERM_ORDER.indexOf(i.term));
+  // Interns without a year yet come after the dated ones.
+  const interns = sortPeople(inGroup('intern'), (i) => -(i.year ?? 0), (i) => (i.term ? -TERM_ORDER.indexOf(i.term) : 0));
 
   return {
     pi: pis[0],

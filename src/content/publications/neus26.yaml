@@ -1,0 +1,13 @@
+title: "Heterogeneous Predictor-based Risk-Aware Planning with Conformal Prediction in Dense, Uncertain Environments"
+authors:
+  - Jeongyong Yang*
+  - KwangBin Lee*
+  - SooJean Han
+venue: "International Conference on Neuro-symbolic Systems (Oral)"
+venueShort: NeuS
+type: conference
+year: 2026
+month: 6
+areas: []
+links:
+  - { type: paper, url: "https://arxiv.org/abs/2507.11920" }

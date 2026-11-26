@@ -1,0 +1,13 @@
+title: "Incremental Nonlinear Stability Analysis for Stochastic Systems Perturbed by Lévy Noise"
+authors:
+  - SooJean Han
+  - Soon-Jo Chung
+venue: "International Journal of Robust and Nonlinear Control, vol. 32, no. 12, pp. 7174-7201"
+venueShort: IJRNC
+type: journal
+year: 2022
+month: 8
+areas: []
+links:
+  - { type: venue, url: "https://onlinelibrary.wiley.com/doi/10.1002/rnc.6216" }
+  - { type: paper, url: "https://arxiv.org/pdf/2103.13338.pdf" }

@@ -94,8 +94,8 @@ If you're unsure which field takes what, copy the "Ask Claude" prompt below.
 
 ### 3-1. Add a publication (Publications)
 - Files: `src/content/publications/` — one file per paper. **Copy `_template.yaml`** and name it with a short id (`tro26.yaml`). The id is the paper's permanent link (`#pub-tro26`) and how projects and research areas refer to it, so don't rename it later.
-- Required: title, authors (a list, in published order; mark equal first authors with `*` and the corresponding author with `†`), venue, type (`journal`/`conference`/`preprint`/`patent`), year, month, areas (area codes from 3-9), summary.
-- Optional: `venueShort`, `selected: true` (features it in the Selected publications carousel), `links` (project / venue / paper / slides / video / code — only the ones you list are shown), `figure` (image, alt text, width/height ratio).
+- Required: title, authors (a list, in published order; mark equal first authors with `*` and the corresponding author with `†`), venue, type (`journal`/`conference`/`preprint`/`patent`), year, month.
+- Optional: `areas` (area codes from 3-9; `[]` until the paper is tagged), `summary` (one or two sentences shown when the row is expanded), `venueShort`, `selected: true` (features it in the Selected publications carousel), `links` (project / venue / paper / slides / video / code — only the ones you list are shown), `figure` (image, alt text, width/height ratio).
 - Figure: put the image at `src/assets/images/publications/<id>.png` (or a short silent `<id>.mp4` loop), then set `figure.image: /images/publications/<id>.png` and `figure.alt`.
   Until then the row shows a placeholder.
 - Order is automatic: newest first, by year then month.
@@ -114,7 +114,8 @@ If you're unsure which field takes what, copy the "Ask Claude" prompt below.
 - Optional for everyone: Korean name, email, photo, links (homepage / LinkedIn / Google Scholar). **A link or email that is left out is simply not shown.**
 - Photo: put a 3:4 image at `src/assets/images/team/<file name>.jpg`, then add `photo: /images/team/<file name>.jpg`.
   Until then the card shows a placeholder.
-- Required for an intern: name, kind (`research`/`undergraduate`; the sub-list they appear in), year, term (`spring`/`summer`/`fall`/`winter`), topics (free-text lines).
+- Required for an intern: name, kind (`research`/`undergraduate`; the sub-list they appear in).
+  Optional: year, term (`spring`/`summer`/`fall`/`winter`), topics (free-text lines); a row shows only what is filled in.
 - **End of an internship**: add `alumni: true` to the intern's file (in the admin: switch **Alumni** on).
   The file stays in `interns/`; the person moves from the Interns list to the collapsed Alumni list under it.
 - **Graduation**: move their file from `current/` to `alumni/`, change `group: member` to `group: alumni`, replace `role` with `degree` (`PhD`/`MS`), add `graduated` (`2026-02`), and `now` (current affiliation) once known. The file name (and so the photo path) stays the same.

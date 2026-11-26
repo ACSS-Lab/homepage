@@ -35,6 +35,7 @@ highlights:
     media: MEDIA
   # Appended to a paper's venue when the paper is marked selected
   selected: Selected
+  empty: No highlights yet. # shown while there is no news item
 
 gallery:
   title: Gallery
@@ -44,6 +45,7 @@ gallery:
   link:
     label: See all
     href: /gallery/
+  empty: No photos yet. # shown while there is no gallery post
   # Accessible names of the carousel buttons
   previous: Previous photo
   next: Next photo

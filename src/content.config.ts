@@ -199,9 +199,10 @@ const team = defineCollection({
     person.extend({
       group: z.literal('intern'),
       kind: z.enum(['research', 'undergraduate']),
-      year: z.number().int(),
-      term: z.enum(['spring', 'summer', 'fall', 'winter']),
-      topics: z.array(z.string()).min(1), // free text
+      // Year, term and topics are filled in when known; a row shows only what is there.
+      year: z.number().int().optional(),
+      term: z.enum(['spring', 'summer', 'fall', 'winter']).optional(),
+      topics: z.array(z.string()).default([]), // free text
       alumni: z.boolean().default(false), // true once the internship is over
     }),
     person.extend({
@@ -233,8 +234,8 @@ const publications = defineCollection({
     year: z.number().int().min(1900).max(2100),
     month: z.number().int().min(1).max(12),
     selected: z.boolean().default(false),
-    areas: z.array(z.string()).min(1), // area codes from taxonomy/areas.yaml
-    summary: z.string(),
+    areas: z.array(z.string()).default([]), // area codes from taxonomy/areas.yaml; [] until the paper is tagged
+    summary: z.string().optional(), // shown when the row is expanded
     links: z.array(z.object({ type: z.enum(publicationLinkTypes), url: href, label: z.string().optional() })).default([]),
     figure: z
       .object({
@@ -421,6 +422,7 @@ const pages = defineCollection({
         link: cta,
         kinds: z.object({ paper: z.string(), award: z.string(), grant: z.string(), media: z.string() }),
         selected: z.string(),
+        empty: z.string(),
       }),
       gallery: z.object({
         title: z.string(),
@@ -428,6 +430,7 @@ const pages = defineCollection({
         autoplay: z.boolean().default(true),
         intervalMs: z.number().int().min(1000).max(30000).default(3000),
         link: cta,
+        empty: z.string(),
         previous: z.string(),
         next: z.string(),
         toggle: z.string(),

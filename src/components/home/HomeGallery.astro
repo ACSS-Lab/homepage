@@ -14,7 +14,7 @@ interface Props {
   more: { label: string; href: string };
   autoplay: boolean;
   intervalMs: number;
-  labels: { previous: string; next: string; toggle: string };
+  labels: { empty: string; previous: string; next: string; toggle: string };
 }
 
 const { title, posts, more, autoplay, intervalMs, labels } = Astro.props;
@@ -27,38 +27,44 @@ const captionMeta = (post: GalleryPost) => [post.tags[0], monthOf(post.date)].fi
     <h2 class="title">{title}</h2>
     <a class="more" href={link(more.href)}>{more.label}<Icon name="arrow-right" size={13} /></a>
   </div>
-  <div class="viewport" data-carousel data-loop style={`--autoplay-ms: ${intervalMs}ms`}>
-    <div class="track">
-      {
-        posts.map((post, i) => (
-          <div class="slide">
-            <Figure class="cover" src={post.cover} alt="" preset="homeGallery" priority={i === 0} />
-            <div class="caption">
-              <span class="caption-title">{post.title}</span>
-              <span class="caption-meta">{captionMeta(post)}</span>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-    <div class="controls">
-      <button class="control" type="button" aria-label={labels.previous} data-carousel-prev>
-        <Icon name="chevron-left" size={14} />
-      </button>
-      <button class="control next" type="button" aria-label={labels.next} data-carousel-next>
-        <Icon name="chevron-right" size={14} />
-      </button>
-      <CarouselDots count={posts.length} fill={autoplay} variant="compact" />
-      {
-        autoplay && (
-          <button class="control toggle" type="button" aria-label={labels.toggle} data-carousel-toggle>
-            <span data-carousel-pause><Icon name="pause" size={12} /></span>
-            <span data-carousel-play hidden><Icon name="play" size={12} /></span>
+  {
+    posts.length === 0 ? (
+      <p class="empty">{labels.empty}</p>
+    ) : (
+      <div class="viewport" data-carousel data-loop style={`--autoplay-ms: ${intervalMs}ms`}>
+        <div class="track">
+          {
+            posts.map((post, i) => (
+              <div class="slide">
+                <Figure class="cover" src={post.cover} alt="" preset="homeGallery" priority={i === 0} />
+                <div class="caption">
+                  <span class="caption-title">{post.title}</span>
+                  <span class="caption-meta">{captionMeta(post)}</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <div class="controls">
+          <button class="control" type="button" aria-label={labels.previous} data-carousel-prev>
+            <Icon name="chevron-left" size={14} />
           </button>
-        )
-      }
-    </div>
-  </div>
+          <button class="control next" type="button" aria-label={labels.next} data-carousel-next>
+            <Icon name="chevron-right" size={14} />
+          </button>
+          <CarouselDots count={posts.length} fill={autoplay} variant="compact" />
+          {
+            autoplay && (
+              <button class="control toggle" type="button" aria-label={labels.toggle} data-carousel-toggle>
+                <span data-carousel-pause><Icon name="pause" size={12} /></span>
+                <span data-carousel-play hidden><Icon name="play" size={12} /></span>
+              </button>
+            )
+          }
+        </div>
+      </div>
+    )
+  }
 </div>
 
 <script>
@@ -91,6 +97,14 @@ const captionMeta = (post: GalleryPost) => [post.tags[0], monthOf(post.date)].fi
     align-items: center;
     gap: var(--space-1);
     font: 500 var(--fs-meta) / 1 var(--font-sans);
+  }
+
+  .empty {
+    margin: 0;
+    padding-block: var(--space-4);
+    border-block: 1px solid var(--gray-300);
+    font: 400 var(--fs-sm) / 1.6 var(--font-sans);
+    color: var(--gray-700);
   }
 
   .viewport {

@@ -98,7 +98,7 @@ collections:
         label: Areas
         widget: select
         multiple: true
-        min: 1
+        required: false
         # The research-area tags of src/content/taxonomy/areas.yaml, in its order. `npm run guard`
         # fails when the two lists differ. Member topics reuse this list through the alias.
         options: &area_options
@@ -118,8 +118,8 @@ collections:
           - { label: 'Computer Vision & Perception (CV)', value: CV }
           - { label: 'Application: Robotics (Robot)', value: Robot }
           - { label: 'Application: Motion-Planning (Planning)', value: Planning }
-        hint: Pick one or more research areas (at least one).
-      - { name: summary, label: Summary, widget: text, hint: 'One or two sentences shown when the row is expanded, in plain words.' }
+        hint: Pick the paper's research areas; leave empty until it is tagged.
+      - { name: summary, label: Summary, widget: text, required: false, hint: 'Optional; one or two sentences shown when the row is expanded, in plain words.' }
       - name: links
         label: Links
         widget: list
@@ -365,14 +365,14 @@ collections:
           - { label: Undergraduate intern, value: undergraduate }
         hint: The sub-list on the Interns tab.
       - { name: alumni, label: Alumni, widget: boolean, default: false, required: false, hint: 'Switch on once the internship is over; it moves them to the collapsed Alumni list.' }
-      - { name: year, label: Year, widget: number, value_type: int, min: 2000, max: 2100 }
-      - { name: term, label: Term, widget: select, options: [spring, summer, fall, winter] }
+      - { name: year, label: Year, widget: number, value_type: int, min: 2000, max: 2100, required: false, hint: 'Optional; leave empty when unknown.' }
+      - { name: term, label: Term, widget: select, options: [spring, summer, fall, winter], required: false, hint: 'Optional; leave empty when unknown.' }
       - name: topics
         label: Topics
         widget: list
-        min: 1
+        required: false
         field: { name: topic, label: Topic, widget: string }
-        hint: One line per topic on what they worked on (free text).
+        hint: Optional; one line per topic on what they worked on (free text).
       - { name: email, label: E-mail, widget: string, type: email, required: false }
       - name: photo
         label: Photo

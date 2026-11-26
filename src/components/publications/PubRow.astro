@@ -25,32 +25,40 @@ const areaCodes = [...pub.areas].sort((a, b) => areaOrder.indexOf(a) - areaOrder
 const areaLabels = areaCodes.map((code) => areas.get(code)?.label ?? code);
 const haystack = [pub.title, pub.authors.join(', '), pub.venue, ...areaLabels].join(' ').toLowerCase();
 const detailsId = `pub-${pub.id}-details`;
+// A row expands only when it has a summary or links to show.
+const hasDetails = Boolean(pub.summary) || pub.links.length > 0;
+const Head = hasDetails ? 'button' : 'div';
+const headProps = hasDetails ? ({ type: 'button', 'aria-expanded': 'false', 'aria-controls': detailsId, 'data-accordion': '' } as const) : {};
 ---
 
 <div class="row" id={`pub-${pub.id}`} hidden={hidden} data-item data-facet-type={pub.type} data-facet-area={pub.areas.join(' ')} data-search={haystack}>
   <div class="grid">
-    <button class="toggle" type="button" aria-expanded="false" aria-controls={detailsId} data-accordion>
+    <Head class:list={['toggle', { static: !hasDetails }]} {...headProps}>
       <span class="meta">
         <Badge tone={pub.type === 'patent' ? 'accent' : 'neutral'}>{ui.publicationTypes[pub.type]}</Badge>
         <span class="venue">{pub.venue}</span>
         <span class="date">{formatMonthName(pub.month, pub.year)}</span>
         {pub.selected && <Badge tone="accent">{labels.selectedBadge}</Badge>}
-        <span class="caret"><Icon name="chevron-down" size={14} /></span>
+        {hasDetails && <span class="caret"><Icon name="chevron-down" size={14} /></span>}
       </span>
       <span class="title">{pub.title}</span>
       <span class="authors">{pub.authors.join(', ')}</span>
       <span class="areas">
         {areaCodes.map((code) => <AreaChip area={areas.get(code)!} />)}
       </span>
-    </button>
+    </Head>
     <div class="figure-slot">
       <FigureButton dialogId={`figure-${pub.id}`} label={labels.openFigure.replace('{title}', pub.title)} src={pub.figure.image} alt={pub.figure.alt ?? ''} preset="pubThumb" />
     </div>
   </div>
-  <div class="details" id={detailsId} hidden>
-    <p class="summary">{pub.summary}</p>
-    <LinkChips publication={pub} labels={labels} />
-  </div>
+  {
+    hasDetails && (
+      <div class="details" id={detailsId} hidden>
+        {pub.summary && <p class="summary">{pub.summary}</p>}
+        <LinkChips publication={pub} labels={labels} />
+      </div>
+    )
+  }
 </div>
 
 <style>
@@ -102,6 +110,10 @@ const detailsId = `pub-${pub.id}-details`;
     background: transparent;
     text-align: left;
     cursor: pointer;
+  }
+
+  .toggle.static {
+    cursor: default;
   }
 
   .meta {

@@ -42,9 +42,9 @@ order: 1 # rarely needed: lower numbers are listed first within the same group
 
 # --- group: intern (instead of the member fields) ---
 # kind: undergraduate     # research | undergraduate; the sub-list on the Interns tab
-# year: 2026
-# term: spring            # spring | summer | fall | winter
-# topics:
+# year: 2026              # optional; leave out when unknown
+# term: spring            # optional; spring | summer | fall | winter
+# topics:                 # optional
 #   - One line on what they worked on
 # alumni: false           # optional; true once the internship is over: moves them to the collapsed Alumni list
 

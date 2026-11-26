@@ -34,13 +34,17 @@ const headlineLines = hero.headline.split('\n');
         </div>
       </div>
 
-      <div class="notice">
-        <NoticeCard title={page.notices.title} notices={notices.slice(0, page.notices.count)} />
-      </div>
+      {
+        notices.length > 0 && (
+          <div class="notice">
+            <NoticeCard title={page.notices.title} notices={notices.slice(0, page.notices.count)} />
+          </div>
+        )
+      }
     </section>
 
     <section class="band">
-      <HighlightFeed title={page.highlights.title} items={news.slice(0, page.highlights.count)} more={page.highlights.link} kinds={page.highlights.kinds} selectedLabel={page.highlights.selected} />
+      <HighlightFeed title={page.highlights.title} items={news.slice(0, page.highlights.count)} more={page.highlights.link} kinds={page.highlights.kinds} selectedLabel={page.highlights.selected} empty={page.highlights.empty} />
       <HomeGallery title={page.gallery.title} posts={gallery.slice(0, page.gallery.count)} more={page.gallery.link} autoplay={page.gallery.autoplay} intervalMs={page.gallery.intervalMs} labels={page.gallery} />
     </section>
   </div>

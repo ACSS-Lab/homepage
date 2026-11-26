@@ -20,7 +20,7 @@ subs:
       - Human-robot interaction
       - Continuous Control
       - Representation learning
-    papers: [arxiv25] # publication ids (file names in src/content/publications/)
+    papers: [] # publication ids (file names in src/content/publications/)
 
   - title: "Data-Efficient Adaptation and Active Learning"
     problem:
@@ -39,4 +39,4 @@ subs:
       - Online learning
       - Stochastic Approximation
       - Data-efficient control
-    papers: [neurips25] # publication ids (file names in src/content/publications/)
+    papers: [] # publication ids (file names in src/content/publications/)

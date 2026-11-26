@@ -22,10 +22,11 @@ Field meanings are in `src/content/publications/_template.yaml`; this skill cove
      Ask when the marks are unknown; do not guess.
    - `type` is journal, conference, preprint or patent.
      A preprint's `venue` is the arXiv id; a patent's is the patent number.
-   - `areas`: only codes from `src/content/taxonomy/areas.yaml`, at least one.
+   - `areas`: only codes from `src/content/taxonomy/areas.yaml`.
      Choose from the abstract; when unsure, list the candidates for the user.
-   - `summary`: one or two plain sentences for a non-specialist.
-     Do not paste the abstract.
+     Write `areas: []` when there is no abstract to choose from; do not guess from the title.
+   - `summary`: optional; one or two plain sentences for a non-specialist.
+     Do not paste the abstract, and leave the field out when there is no abstract to write it from.
    - `selected: false` unless the user asks for the carousel.
    - `links`: only the ones the user gave.
      DOI goes under `venue`, PDF under `paper`, GitHub under `code`.

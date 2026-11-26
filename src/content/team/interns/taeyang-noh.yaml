@@ -1,8 +1,0 @@
-group: intern
-kind: undergraduate
-name: Taeyang Noh
-nameKo: 노태양
-year: 2026
-term: spring
-topics:
-  - Reproducing safe-RL baselines

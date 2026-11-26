@@ -1,6 +1,7 @@
 ---
 // Interns as ruled summary rows (name + Korean name / topics / term) instead of
-// cards: one titled sub-list per kind of intern. Used for the current interns
+// cards: one titled sub-list per kind of intern. Topics, year and term are
+// optional; a row shows what the file has. Used for the current interns
 // and, inside the collapsed Alumni section, for the past ones.
 import type { Intern } from '../../lib/content';
 import SectionHeading from '../ui/SectionHeading.astro';
@@ -9,7 +10,7 @@ interface Props {
   /** Sub-lists in display order; a kind with nobody in it is left out by the caller. */
   groups: { title: string; people: Intern[] }[];
   /** Display names of the terms, from the page's labels. */
-  terms: Record<Intern['term'], string>;
+  terms: Record<NonNullable<Intern['term']>, string>;
   /** Line shown when there is no group at all. */
   empty: string;
 }
@@ -30,9 +31,7 @@ const { groups, terms, empty } = Astro.props;
                 {intern.name} {intern.nameKo && <span class="ko">{intern.nameKo}</span>}
               </span>
               <span class="topics">{intern.topics.join(' · ')}</span>
-              <span class="term">
-                {intern.year} {terms[intern.term]}
-              </span>
+              <span class="term">{[intern.year, intern.term && terms[intern.term]].filter(Boolean).join(' ')}</span>
             </li>
           ))}
         </ul>
