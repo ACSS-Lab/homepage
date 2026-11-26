@@ -312,7 +312,7 @@ collections:
     label: Interns
     label_singular: Intern
     icon: school
-    folder: src/content/team/undergrad_interns
+    folder: src/content/team/interns
     format: yaml
     extension: yaml
     identifier_field: name

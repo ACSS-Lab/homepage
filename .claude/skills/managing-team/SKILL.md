@@ -15,7 +15,7 @@ Field meanings are in `src/content/team/_template.yaml`.
 | subfolder | group | required beyond name |
 |---|---|---|
 | `current/` | `member` | `role` (postdoc, phd, ms), `joined` (YYYY-MM), `topics` (area codes; `[]` if none) |
-| `undergrad_interns/` | `intern` | `kind` (research, undergraduate), `year`, `term` (spring, summer, fall, winter), `topics` (free-text lines); optional `alumni` |
+| `interns/` | `intern` | `kind` (research, undergraduate), `year`, `term` (spring, summer, fall, winter), `topics` (free-text lines); optional `alumni` |
 | `alumni/` | `alumni` | `degree` (PhD, MS), `joined`, `graduated`; optional `note`, `now` |
 | `pi_and_staff/` | `pi`, `visiting`, `staff` | `title`; visiting also `home`, optional `period` |
 
@@ -41,7 +41,7 @@ Field meanings are in `src/content/team/_template.yaml`.
 ## End an internship
 
 1. Add `alumni: true` to the intern's file.
-   The file stays in `undergrad_interns/`, which holds research and undergraduate interns alike.
+   The file stays in `interns/`, which holds research and undergraduate interns alike.
 2. The person moves from the Interns list to the collapsed Alumni list under it; `kind` still decides the sub-list.
 
 ## Edit a profile

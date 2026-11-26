@@ -15,7 +15,7 @@ paths:
 - A file's name is its id, and ids are permanent.
   Publications are linked as `#pub-<id>` and referenced by projects, research areas and news; a team member's photo path is derived from the id.
   Never rename an existing file.
-- Team files must sit in the subfolder that matches their `group`: `current/` = member, `undergrad_interns/` = intern, `alumni/` = alumni, `pi_and_staff/` = pi, visiting or staff.
+- Team files must sit in the subfolder that matches their `group`: `current/` = member, `interns/` = intern, `alumni/` = alumni, `pi_and_staff/` = pi, visiting or staff.
   The build stops otherwise.
 - Area codes (`areas`, `topics`) must exist in `src/content/taxonomy/areas.yaml`.
   Publication ids referenced from `projects/`, `research-areas/` and `news/` must exist.

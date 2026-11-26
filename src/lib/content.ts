@@ -148,7 +148,7 @@ const TEAM_FOLDER: Record<TeamData['group'], string> = {
   visiting: 'pi_and_staff',
   staff: 'pi_and_staff',
   member: 'current',
-  intern: 'undergrad_interns',
+  intern: 'interns',
   alumni: 'alumni',
 };
 

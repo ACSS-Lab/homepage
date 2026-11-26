@@ -32,7 +32,7 @@
 | Publications | `/research/publications/` | `publications/`, tags from `taxonomy/areas.yaml` |
 | Projects | `/research/projects/` | `projects/` (papers linked from `publications/`) |
 | PI & Staffs | `/team/professor/` | `team/pi_and_staff/` |
-| Team | `/team/` (`#current`, `#interns`, `#alumni`) | `team/current/`, `team/undergrad_interns/`, `team/alumni/` |
+| Team | `/team/` (`#current`, `#interns`, `#alumni`) | `team/current/`, `team/interns/`, `team/alumni/` |
 | Gallery | `/gallery/` | `gallery/` |
 | Contact | `/contact/` | `contact/tracks/` (one file per application track), `site/site.yaml` (address, maps, e-mails) |
 
@@ -107,7 +107,7 @@ If you're unsure which field takes what, copy the "Ask Claude" prompt below.
 - Files: `src/content/team/` — one file per person, filed in a subfolder by status. **Copy `_template.yaml`** into the right subfolder, name it `firstname-lastname.yaml`, and fill it in. The template lists every field with an example.
 - `group` decides where the person appears, and the subfolder must match it (the build stops otherwise):
   - `current/` — `member` (current postdoc/PhD/MS)
-  - `undergrad_interns/` - `intern` (research and undergraduate interns alike)
+  - `interns/` - `intern` (research and undergraduate interns alike)
   - `alumni/` — `alumni`
   - `pi_and_staff/` — `pi`, `visiting`, `staff`
 - Required for a member: name, role (`postdoc`/`phd`/`ms`), joined (`2026-03`), topics (area codes from 3-9; `[]` if none yet).
@@ -116,7 +116,7 @@ If you're unsure which field takes what, copy the "Ask Claude" prompt below.
   Until then the card shows a placeholder.
 - Required for an intern: name, kind (`research`/`undergraduate`; the sub-list they appear in), year, term (`spring`/`summer`/`fall`/`winter`), topics (free-text lines).
 - **End of an internship**: add `alumni: true` to the intern's file (in the admin: switch **Alumni** on).
-  The file stays in `undergrad_interns/`; the person moves from the Interns list to the collapsed Alumni list under it.
+  The file stays in `interns/`; the person moves from the Interns list to the collapsed Alumni list under it.
 - **Graduation**: move their file from `current/` to `alumni/`, change `group: member` to `group: alumni`, replace `role` with `degree` (`PhD`/`MS`), add `graduated` (`2026-02`), and `now` (current affiliation) once known. The file name (and so the photo path) stays the same.
 - Order is automatic (members by role then join date; interns and alumni newest first). To pin someone, add `order: 1`.
 - **Ask Claude**:
