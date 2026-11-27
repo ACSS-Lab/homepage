@@ -1,13 +1,16 @@
-title: "SafeFlowMatcher: Safe and Fast Planning using Flow Matching with Control Barrier Functions"
+title: 'SafeFlowMatcher: Safe and Fast Planning using Flow Matching with Control Barrier Functions'
 authors:
   - Jeongyong Yang*
-  - Seunghwan Jang*
-  - SooJean Han
-venue: "International Conference on Learning Representations"
+  - Seunghwan Jang*†
+  - SooJean Han†
+venue: International Conference on Learning Representations
 venueShort: ICLR
 type: conference
 year: 2026
-month: 1
-areas: []
+month: 4
+selected: false
 links:
-  - { type: paper, url: "https://arxiv.org/abs/2509.24243" }
+  - type: paper
+    url: https://arxiv.org/abs/2509.24243
+figure:
+  ratio: 4/3

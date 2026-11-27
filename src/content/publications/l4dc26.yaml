@@ -1,11 +1,13 @@
-title: "Scalable Infinitesimal Generator-Based Koopman Learning for Long-Horizon Prediction"
+title: Scalable Infinitesimal Generator-Based Koopman Learning for Long-Horizon Prediction
 authors:
   - Minseok Jeong
-  - SooJean Han
+  - SooJean Han†
   - Hyo-Sang Shin
-venue: "Learning for Dynamics and Control Conference"
+venue: Learning for Dynamics and Control Conference
 venueShort: L4DC
 type: conference
 year: 2026
 month: 1
-areas: []
+selected: false
+figure:
+  ratio: 4/3

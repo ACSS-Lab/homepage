@@ -26,6 +26,7 @@ summary: >-
 # Optional. Only the links listed here are shown, always in this order:
 # project, venue, paper, slides, video, code. `label` replaces the default chip text.
 links:
+  - { type: eBook, url: "https://example.com/" }
   - { type: project, url: "https://example.com/" }
   - { type: venue, url: "https://example.com/" }
   - { type: paper, url: "https://example.com/paper.pdf" }

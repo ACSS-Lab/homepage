@@ -1,28 +1,35 @@
 ---
-import AreaFamilyList from '../../components/filters/AreaFamilyList.astro';
-import FacetAccordion from '../../components/filters/FacetAccordion.astro';
-import FacetOptions from '../../components/filters/FacetOptions.astro';
-import FilterBarMobile from '../../components/filters/FilterBarMobile.astro';
-import FilterLayout from '../../components/filters/FilterLayout.astro';
-import FilterPanel from '../../components/filters/FilterPanel.astro';
-import LoadMoreSentinel from '../../components/filters/LoadMoreSentinel.astro';
-import ResetButton from '../../components/filters/ResetButton.astro';
-import HeroTabs from '../../components/layout/HeroTabs.astro';
-import PageHero from '../../components/layout/PageHero.astro';
-import FeaturedCarousel from '../../components/publications/FeaturedCarousel.astro';
-import FigureLightbox from '../../components/publications/FigureLightbox.astro';
-import PubRow from '../../components/publications/PubRow.astro';
-import YearGroup from '../../components/publications/YearGroup.astro';
-import AreaChip from '../../components/ui/AreaChip.astro';
-import Badge from '../../components/ui/Badge.astro';
-import EmptyState from '../../components/ui/EmptyState.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { publicationTypes } from '../../content.config';
-import { getAreaFamilies, getAreaIndex, getNavigation, getPage, getPublications, getUi } from '../../lib/content';
-import { sectionTabs } from '../../lib/navigation';
+import AreaFamilyList from "../../components/filters/AreaFamilyList.astro";
+import FacetAccordion from "../../components/filters/FacetAccordion.astro";
+import FacetOptions from "../../components/filters/FacetOptions.astro";
+import FilterBarMobile from "../../components/filters/FilterBarMobile.astro";
+import FilterLayout from "../../components/filters/FilterLayout.astro";
+import FilterPanel from "../../components/filters/FilterPanel.astro";
+import LoadMoreSentinel from "../../components/filters/LoadMoreSentinel.astro";
+import ResetButton from "../../components/filters/ResetButton.astro";
+import HeroTabs from "../../components/layout/HeroTabs.astro";
+import PageHero from "../../components/layout/PageHero.astro";
+import FeaturedCarousel from "../../components/publications/FeaturedCarousel.astro";
+import FigureLightbox from "../../components/publications/FigureLightbox.astro";
+import PubRow from "../../components/publications/PubRow.astro";
+import YearGroup from "../../components/publications/YearGroup.astro";
+import AreaChip from "../../components/ui/AreaChip.astro";
+import Badge from "../../components/ui/Badge.astro";
+import EmptyState from "../../components/ui/EmptyState.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { publicationTypes } from "../../content.config";
+import {
+  getAreaFamilies,
+  getAreaIndex,
+  getNavigation,
+  getPage,
+  getPublications,
+  getUi,
+} from "../../lib/content";
+import { sectionTabs } from "../../lib/navigation";
 
 const [page, publications, nav, areas, families, ui] = await Promise.all([
-  getPage('publications'),
+  getPage("publications"),
   getPublications(),
   getNavigation(),
   getAreaIndex(),
@@ -32,16 +39,26 @@ const [page, publications, nav, areas, families, ui] = await Promise.all([
 const { list, labels, filters, featured } = page;
 const selected = publications.filter((p) => p.selected);
 
-const accepted = publications.filter((p) => p.type === 'journal' || p.type === 'conference').length;
-const preprints = publications.filter((p) => p.type === 'preprint').length;
-const countLine = page.hero.countLine.replace('{accepted}', String(accepted)).replace('{preprints}', String(preprints));
+const accepted = publications.filter(
+  (p) => p.type === "journal" || p.type === "conference" || p.type === "book",
+).length;
+const preprints = publications.filter((p) => p.type === "preprint").length;
+const countLine = page.hero.countLine
+  .replace("{accepted}", String(accepted))
+  .replace("{preprints}", String(preprints));
 
 const years = [...new Set(publications.map((p) => p.year))];
 const typeOptions = publicationTypes
-  .map((type) => ({ value: type, label: ui.publicationTypes[type], count: publications.filter((p) => p.type === type).length }))
+  .map((type) => ({
+    value: type,
+    label: ui.publicationTypes[type],
+    count: publications.filter((p) => p.type === type).length,
+  }))
   .filter((o) => o.count > 0);
 const areaCounts = new Map<string, number>();
-for (const pub of publications) for (const code of pub.areas) areaCounts.set(code, (areaCounts.get(code) ?? 0) + 1);
+for (const pub of publications)
+  for (const code of pub.areas)
+    areaCounts.set(code, (areaCounts.get(code) ?? 0) + 1);
 const usedAreas = [...areas.values()].filter((a) => areaCounts.has(a.code));
 let position = 0;
 ---
@@ -52,22 +69,43 @@ let position = 0;
     <p class="count">{countLine}</p>
   </PageHero>
 
-  {featured.show && selected.length > 0 && <FeaturedCarousel publications={selected} areas={areas} title={featured.title} autoplay={featured.autoplay} intervalMs={featured.intervalMs} labels={labels} />}
+  {featured.show && selected.length > 0 && (
+    <FeaturedCarousel
+      publications={selected}
+      areas={areas}
+      title={featured.title}
+      autoplay={featured.autoplay}
+      intervalMs={featured.intervalMs}
+      labels={labels}
+    />
+  )}
 
   <div class="list">
     <FilterLayout pageSize={page.pageSize}>
       <FilterPanel slot="panel" searchPlaceholder={filters.searchPlaceholder}>
         <FacetAccordion id="facet-type" label={filters.type}>
           <span slot="active" data-facet-active="type" hidden>
-            {typeOptions.map((o) => <span data-value={o.value} hidden><Badge tone="accent">{o.label}</Badge></span>)}
+            {typeOptions.map((o) => (
+              <span data-value={o.value} hidden>
+                <Badge tone="accent">{o.label}</Badge>
+              </span>
+            ))}
           </span>
           <FacetOptions facet="type" options={typeOptions} />
         </FacetAccordion>
         <FacetAccordion id="facet-area" label={filters.topic}>
           <span slot="active" data-facet-active="area" hidden>
-            {usedAreas.map((area) => <span data-value={area.code} hidden><AreaChip area={area} /></span>)}
+            {usedAreas.map((area) => (
+              <span data-value={area.code} hidden>
+                <AreaChip area={area} />
+              </span>
+            ))}
           </span>
-          <AreaFamilyList families={families} counts={areaCounts} idPrefix="panel" />
+          <AreaFamilyList
+            families={families}
+            counts={areaCounts}
+            idPrefix="panel"
+          />
         </FacetAccordion>
       </FilterPanel>
 
@@ -75,35 +113,53 @@ let position = 0;
         <h2 class="heading">{list.heading}</h2>
         <span class="footnote">{list.footnote}</span>
       </div>
-      <FilterBarMobile searchPlaceholder={filters.searchPlaceholder} facet="type" options={typeOptions} legendLabel={filters.topic} families={families} areaCounts={areaCounts} areas={areas} />
+      <FilterBarMobile
+        searchPlaceholder={filters.searchPlaceholder}
+        facet="type"
+        options={typeOptions}
+        legendLabel={filters.topic}
+        families={families}
+        areaCounts={areaCounts}
+        areas={areas}
+      />
       <EmptyState hidden>
         <p class="empty-text">{list.empty}</p>
         <ResetButton label={list.reset} variant="large" />
       </EmptyState>
 
       <div class="groups">
-        {
-          years.map((year, i) => {
-            const items = publications.filter((p) => p.year === year);
-            return (
-              <YearGroup year={year} countFormats={list.perYear} count={items.length} index={i}>
-                {items.map((pub) => (
-                  <PubRow publication={pub} areas={areas} labels={labels} hidden={position++ >= page.pageSize} />
-                ))}
-              </YearGroup>
-            );
-          })
-        }
+        {years.map((year, i) => {
+          const items = publications.filter((p) => p.year === year);
+          return (
+            <YearGroup
+              year={year}
+              countFormats={list.perYear}
+              count={items.length}
+              index={i}
+            >
+              {items.map((pub) => (
+                <PubRow
+                  publication={pub}
+                  areas={areas}
+                  labels={labels}
+                  hidden={position++ >= page.pageSize}
+                />
+              ))}
+            </YearGroup>
+          );
+        })}
       </div>
       <LoadMoreSentinel variant="rows" rootMargin="300px 0px" />
     </FilterLayout>
   </div>
 
-  {publications.map((pub) => <FigureLightbox publication={pub} labels={labels} />)}
+  {publications.map((pub) => (
+    <FigureLightbox publication={pub} labels={labels} />
+  ))}
 </BaseLayout>
 
 <script>
-  import { initDeepLink } from '../../scripts/deeplink';
+  import { initDeepLink } from "../../scripts/deeplink";
   initDeepLink();
 </script>
 

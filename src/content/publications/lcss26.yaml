@@ -1,10 +1,12 @@
-title: "Scalable Sensor Scheduling for Continuous-Discrete Kalman Filtering via Information-Form Surrogate Dynamics"
+title: Scalable Sensor Scheduling for Continuous-Discrete Kalman Filtering via Information-Form Surrogate Dynamics
 authors:
   - Hyeongmin Choe
-  - SooJean Han
-venue: "IEEE Control Systems Letters"
+  - SooJean Han†
+venue: IEEE Control Systems Letters
 venueShort: L-CSS
 type: journal
 year: 2026
 month: 7
-areas: []
+selected: false
+figure:
+  ratio: 4/3

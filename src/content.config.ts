@@ -108,7 +108,7 @@ const ui = defineCollection({
     modal: z.object({ close: z.string() }),
     filter: z.object({ label: z.string(), reset: z.string(), filteredBy: z.string() }),
     lightbox: z.object({ previous: z.string(), next: z.string(), thumb: z.string().includes('{n}') }),
-    publicationTypes: z.object({ journal: z.string(), conference: z.string(), preprint: z.string(), patent: z.string() }),
+    publicationTypes: z.object({ book: z.string(), journal: z.string(), conference: z.string(), preprint: z.string(), patent: z.string() }),
     person: z.object({
       email: z.string(),
       links: z.object({ homepage: z.string(), linkedin: z.string(), scholar: z.string() }),
@@ -219,9 +219,9 @@ const team = defineCollection({
 // ----------------------------------------------------------------------------
 // publications — one file per paper; the file name is the paper's permanent id
 // ----------------------------------------------------------------------------
-export const publicationTypes = ['journal', 'conference', 'preprint', 'patent'] as const;
+export const publicationTypes = ['book', 'journal', 'conference', 'preprint', 'patent'] as const;
 /** Also the order in which a paper's links are shown. */
-export const publicationLinkTypes = ['project', 'venue', 'paper', 'slides', 'video', 'code'] as const;
+export const publicationLinkTypes = ['eBook', 'project', 'venue', 'paper', 'slides', 'video', 'code'] as const;
 
 const publications = defineCollection({
   loader: folder('publications'),

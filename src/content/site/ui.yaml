@@ -39,6 +39,7 @@ lightbox:
 
 # Publication types, as shown on chips
 publicationTypes:
+  book: Book
   journal: Journal
   conference: Conference
   preprint: Preprint

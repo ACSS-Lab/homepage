@@ -1,10 +1,12 @@
-title: "Distributed Kalman-IMM Cooperative Estimator Synthesis for Large-Scale Networked Switching Systems"
+title: Distributed Kalman-IMM Cooperative Estimator Synthesis for Large-Scale Networked Switching Systems
 authors:
-  - Eunwoo Sung
-  - SooJean Han
-venue: "IEEE Conference on Decision and Control"
+  - Eunwoo Sung†
+  - SooJean Han†
+venue: IEEE Conference on Decision and Control
 venueShort: CDC
 type: conference
 year: 2025
 month: 12
-areas: []
+selected: false
+figure:
+  ratio: 4/3

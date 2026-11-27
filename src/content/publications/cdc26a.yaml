@@ -1,11 +1,13 @@
-title: "Localized Markov Jump Quadratic Optimal Control: A System-Level Approach"
+title: 'Localized Markov Jump Quadratic Optimal Control: A System-Level Approach'
 authors:
   - Eunwoo Sung
-  - SooJean Han
+  - SooJean Han†
   - Hyo-Sang Shin
-venue: "IEEE Conference on Decision and Control"
+venue: IEEE Conference on Decision and Control
 venueShort: CDC
 type: conference
 year: 2026
 month: 12
-areas: []
+selected: false
+figure:
+  ratio: 4/3

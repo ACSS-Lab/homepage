@@ -72,6 +72,7 @@ collections:
       default: { field: year, direction: descending }
     view_filters:
       - { label: Selected, field: selected, pattern: true }
+      - { label: Book, field: type, pattern: '^book$' }
       - { label: Journal, field: type, pattern: '^journal$' }
       - { label: Conference, field: type, pattern: '^conference$' }
       - { label: Preprint, field: type, pattern: '^preprint$' }
@@ -90,7 +91,7 @@ collections:
         hint: Full names in published order (SooJean Han); mark equal first authors with * and the corresponding author with †.
       - { name: venue, label: Venue, widget: string, hint: 'Full name; for a patent the number, for a preprint the arXiv id.' }
       - { name: venueShort, label: Venue (short), widget: string, required: false, hint: 'Short name used on compact lists and on the venue link.' }
-      - { name: type, label: Type, widget: select, options: [journal, conference, preprint, patent] }
+      - { name: type, label: Type, widget: select, options: [book, journal, conference, preprint, patent] }
       - { name: year, label: Year, widget: number, value_type: int, min: 1900, max: 2100 }
       - { name: month, label: Month, widget: number, value_type: int, min: 1, max: 12, hint: '1-12; orders papers within a year.' }
       - { name: selected, label: Selected, widget: boolean, default: false, hint: 'Features the paper in the Selected publications carousel.' }

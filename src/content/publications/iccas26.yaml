@@ -1,10 +1,12 @@
-title: "Hierarchical Robust Control of Winch-Tethered Quadrotors via Adaptive Bias Compensation and Distance-Based Winch Regulation"
+title: Hierarchical Robust Control of Winch-Tethered Quadrotors via Adaptive Bias Compensation and Distance-Based Winch Regulation
 authors:
   - Jungyo Jung
-  - SooJean Han
-venue: "International Conference on Control, Automation and Systems"
+  - SooJean Han†
+venue: International Conference on Control, Automation and Systems
 venueShort: ICCAS
 type: conference
 year: 2026
 month: 10
-areas: []
+selected: false
+figure:
+  ratio: 4/3

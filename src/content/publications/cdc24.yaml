@@ -1,13 +1,16 @@
-title: "A Stochastic Robust Adaptive Systems Level Approach to Stabilizing Large-Scale Uncertain Markovian Jump Linear Systems"
+title: A Stochastic Robust Adaptive Systems Level Approach to Stabilizing Large-Scale Uncertain Markovian Jump Linear Systems
 authors:
-  - SooJean Han*
+  - SooJean Han*†
   - Minwoo Kim*
   - Ieun Choo
-venue: "IEEE Conference on Decision and Control"
+venue: IEEE Conference on Decision and Control
 venueShort: CDC
 type: conference
 year: 2024
 month: 9
-areas: []
+selected: false
 links:
-  - { type: paper, url: "https://ieeexplore.ieee.org/document/10886289" }
+  - type: paper
+    url: https://ieeexplore.ieee.org/document/10886289
+figure:
+  ratio: 4/3

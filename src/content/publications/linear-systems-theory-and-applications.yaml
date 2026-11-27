@@ -1,0 +1,16 @@
+title: 'Linear Systems: Theory and Applications'
+authors:
+  - SooJean Han
+venue: Springer
+type: book
+year: 2026
+month: 1
+selected: true
+links:
+  - type: project
+    url: https://link.springer.com/book/10.1007/978-981-96-9774-8?as=webp
+    label: eBook
+figure:
+  ratio: 4/3
+  image: /images/publications/linsys_book-1.webp
+  alt: Front cover
